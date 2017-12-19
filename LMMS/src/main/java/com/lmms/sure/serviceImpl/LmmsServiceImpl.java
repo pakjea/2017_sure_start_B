@@ -7,45 +7,69 @@ import org.springframework.stereotype.Service;
 
 import com.lmms.sure.dao.LmmsDao;
 import com.lmms.sure.service.LmmsService;
-import com.lmms.sure.vo.TopRank;
-import com.lmms.sure.vo.Menu;
+import com.lmms.sure.vo.MileStone;
+import com.lmms.sure.vo.Project;
 
 @Service
 public class LmmsServiceImpl implements LmmsService{
 
 	@Autowired
 	private LmmsDao lmmsDao;
+
+	@Override
+	public List<Project> getProject() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MileStone> getMileStone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int setProject(String projectName, String projectContent, String projectEndTime, String projectMember,
+			String projectReason, String projectManager, String projectRegisterDate, String projectStatus,
+			String teamName, String centerName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int setMileStone(String mileStoneName, String mileStoneRegisterDate, String mileStoneMember,
+			String mileStoneManager, String mileStoneReason, String mileStoneStatus) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int removeProject(int projectId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int removeMileStone(int mileStoneId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int modifiedProject(String projectName, String projectContent, String projectEndTime, String projectMember,
+			String projectReason, String projectManager, String projectRegisterDate, String projectStatus,
+			String teamName, String centerName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int modifiedMileStone(String mileStoneName, String mileStoneRegisterDate, String mileStoneMember,
+			String mileStoneManager, String mileStoneReason, String mileStoneStatus) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
-	//menu
-	@Override
-	public List<Menu> getMenu(){
-		return lmmsDao.getMenu();
-	}
 	
-	// Top100 chart 
-	@Override
-	public List<TopRank> getRealTimeChart() {
-		return lmmsDao.getRealTimeChart();
-	}
-
-	@Override
-	public List<TopRank> getRiseChart() {
-		return lmmsDao.getRiseChart();
-	}
-
-	@Override
-	public List<TopRank> getDailyChart() {
-		return lmmsDao.getDailyChart();
-	}
-
-	@Override
-	public List<TopRank> getWeeklyChart() {
-		return lmmsDao.getWeeklyChart();
-	}
-
-	@Override
-	public List<TopRank> getMonthlyChart() {
-		return lmmsDao.getMonthlyChart();
-	}
 }
