@@ -33,7 +33,7 @@ public interface LmmsDao {
 			+ "#{projectManager}, #{projectRegisterDate}, #{projectStatus}, #{teamName}, #{centerName})")
 	int insertProject(Project project);
 	
-	//¾øÀ¸¸é ÀÎ¼­Æ® ÀÖÀ¸¸é ¾÷µ¥ÀÌÆ® Äõ¸®·Î º¯°æ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Insert("INSERT into lmms.MileStone(mName, mRegisterDate, mMember, mManager, mReason,"
 			+ "mStatus, pId) VALUES(#{mileStoneName}, #{mileStoneRegisterDate},"
 			+ "#{mileStoneMember}, #{mileStoneManager}, #{mileStoneReason},"
