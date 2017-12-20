@@ -12,24 +12,16 @@ public interface LmmsService {
 	
 	List<MileStone> getMileStone();
 	
-	int setProject(String projectName, String projectContent, String projectStartTime, 
-			String projectEndTime, String projectMember, String projectReason, 
-			String projectManager, String projectRegisterDate, String projectStatus, 
-			String teamName, String centerName);
+	int setProject(Project modal);
 	
-	int setMileStone(String mileStoneName, String mileStoneRegisterDate, String mileStoneMember,
-			String mileStoneManager, String mileStoneReason, String mileStoneStatus);
+	int setMileStone(MileStone mileStone);
 	
 	int removeProject(int projectId);
 	
 	int removeMileStone(int mileStoneId);
 	
-	int modifiedProject(String projectName, String projectContent, String projectStartTime, 
-			String projectEndTime, String projectMember, String projectReason, 
-			String projectManager, String projectRegisterDate, String projectStatus, 
-			String teamName, String centerName);
+	int modifiedProject(Project modal);
 	
-	int modifiedMileStone(String mileStoneName, String mileStoneRegisterDate, String mileStoneMember,
-			String mileStoneManager, String mileStoneReason, String mileStoneStatus);
+	int modifiedMileStone(MileStone mileStone);
 	
 }

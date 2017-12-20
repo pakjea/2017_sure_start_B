@@ -5292,3 +5292,21 @@ Caused by: java.io.FileNotFoundException: C:\Program Files\Git\mingw64\share\git
 !ENTRY org.eclipse.jface.text 2 0 2017-12-20 10:56:24.329
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
 >>>>>>> origin/LMMS45
+
+!ENTRY org.eclipse.jface.text 2 0 2017-12-20 15:57:40.426
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-12-20 15:57:40.426
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-12-20 15:57:40.489
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-12-20 15:57:40.489
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-12-20 16:10:30.709
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-12-20 16:10:30.724
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

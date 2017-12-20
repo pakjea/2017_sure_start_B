@@ -65,7 +65,8 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span9">
-
+			
+			${allProject }
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="hello world">프로젝트 수정</button>
@@ -81,27 +82,27 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
         </button>
       </div>
       <div class="modal-body">
-        <form action="/insertProject.do" method="post">
+        <form action="/insertProject" method="post">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
-            <input type="text" class="form-control" id="projectName" name="projectName">
+            <input type="text" class="form-control" id="projectName" name="name">
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name= "projectStartTime">
+            <input type="text" class="form-control" id="projectStartTime" name= "startTime">
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name ="projectEndTime">
+            <input type="text" class="form-control" id="projectEndTime" name ="endTime">
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
-            <input type="text" class="form-control" id="projectMember" name ="projectMember">
+            <input type="text" class="form-control" id="projectMember" name ="member">
             <label for="projectManager" class="col-form-label">담당자</label>
-            <input type="text" class="form-control" id="projectManager" name ="projectManager">
+            <input type="text" class="form-control" id="projectManager" name ="manager">
             <label for="teamName" class="col-form-label">팀 이름</label>
             <input type="text" class="form-control" id="teamName" name="teamName">
             <label for="centerName" class="col-form-label">센터(실) 이름</label>
             <input type="text" class="form-control" id="centerName" name ="centerName">
-            
+            <input type="hidden" id="projectStatus" name="status" value="N">
           </div>
           <div class="form-group">
             <label for="projectContent" class="col-form-label">프로젝트 내용</label>
-            <textarea class="form-control" id="projectContent" name="projectContent"></textarea>
+            <textarea class="form-control" id="projectContent" name="content"></textarea>
           </div>
           
           <div class="modal-footer">
@@ -148,6 +149,7 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
             <input type="text" class="form-control" id="teamName">
             <label for="centerName" class="col-form-label">센터(실) 이름</label>
             <input type="text" class="form-control" id="centerName">
+            <input type="hidden" class="form-control" id="projectStatus" value="N">
             
           </div>
           <div class="form-group">

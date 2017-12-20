@@ -2,78 +2,78 @@ package com.lmms.sure.vo;
 
 public class Project {
 	
-	private int projectId;
-	private String projectName;
-	private String projectContent;
-	private String projectStartTime;
-	private String projectEndTime;
-	private String projectMember;
-	private String projectReason;
-	private String projectManager;
-	private String projectRegisterDate;
-	private String projectStatus;
+	private int id;
+	private String name;
+	private String content;
+	private String startTime;
+	private String endTime;
+	private String member;
+	private String reason;
+	private String manager;
+	private String registerDate;
+	private String status;
 	private String teamName;
 	private String centerName;
 	
-	public int getProjectId() {
-		return projectId;
+	public int getId() {
+		return id;
 	}
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getProjectName() {
-		return projectName;
+	public String getName() {
+		return name;
 	}
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getProjectContent() {
-		return projectContent;
+	public String getContent() {
+		return content;
 	}
-	public void setProjectContent(String projectContent) {
-		this.projectContent = projectContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getProjectStartTime() {
-		return projectStartTime;
+	public String getStartTime() {
+		return startTime;
 	}
-	public void setProjectStartTime(String projectStartTime) {
-		this.projectStartTime = projectStartTime;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
-	public String getProjectEndTime() {
-		return projectEndTime;
+	public String getEndTime() {
+		return endTime;
 	}
-	public void setProjectEndTime(String projectEndTime) {
-		this.projectEndTime = projectEndTime;
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
-	public String getProjectMember() {
-		return projectMember;
+	public String getMember() {
+		return member;
 	}
-	public void setProjectMember(String projectMember) {
-		this.projectMember = projectMember;
+	public void setMember(String member) {
+		this.member = member;
 	}
-	public String getProjectReason() {
-		return projectReason;
+	public String getReason() {
+		return reason;
 	}
-	public void setProjectReason(String projectReason) {
-		this.projectReason = projectReason;
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
-	public String getProjectManager() {
-		return projectManager;
+	public String getManager() {
+		return manager;
 	}
-	public void setProjectManager(String projectManager) {
-		this.projectManager = projectManager;
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
-	public String getProjectRegisterDate() {
-		return projectRegisterDate;
+	public String getRegisterDate() {
+		return registerDate;
 	}
-	public void setProjectRegisterDate(String projectRegisterDate) {
-		this.projectRegisterDate = projectRegisterDate;
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
 	}
-	public String getProjectStatus() {
-		return projectStatus;
+	public String getStatus() {
+		return status;
 	}
-	public void setProjectStatus(String projectStatus) {
-		this.projectStatus = projectStatus;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public String getTeamName() {
 		return teamName;

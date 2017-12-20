@@ -19,7 +19,7 @@ public class LmmsServiceImpl implements LmmsService{
 	@Override
 	public List<Project> getProject() {
 		// TODO Auto-generated method stub
-		return null;
+		return lmmsDao.selectProject();
 	}
 
 	@Override
@@ -29,31 +29,13 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 
 	@Override
-	public int setProject(String projectName, String projectContent, String projectStartTime, 
-			String projectEndTime, String projectMember, String projectReason, 
-			String projectManager, String projectRegisterDate, String projectStatus, 
-			String teamName, String centerName) {
+	public int setProject(Project project) {
 		// TODO Auto-generated method stub
-		
-		Project param = new Project();
-		param.setProjectName(projectName);
-		param.setProjectContent(projectContent);
-		param.setProjectStartTime(projectStartTime);
-		param.setProjectEndTime(projectEndTime);
-		param.setProjectMember(projectMember);
-		param.setProjectReason(projectReason);
-		param.setProjectManager(projectManager);
-		param.setProjectRegisterDate(projectRegisterDate);
-		param.setProjectStatus(projectStatus);
-		param.setTeamName(teamName);
-		param.setCenterName(centerName);
-		
-		return lmmsDao.insertProject(param);
+		return lmmsDao.insertProject(project);
 	}
 
 	@Override
-	public int setMileStone(String mileStoneName, String mileStoneRegisterDate, String mileStoneMember,
-			String mileStoneManager, String mileStoneReason, String mileStoneStatus) {
+	public int setMileStone(MileStone mileStone) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -71,17 +53,13 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 
 	@Override
-	public int modifiedProject(String projectName, String projectContent, String projectStartTime, 
-			String projectEndTime, String projectMember, String projectReason, 
-			String projectManager, String projectRegisterDate, String projectStatus, 
-			String teamName, String centerName) {
+	public int modifiedProject(Project project) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int modifiedMileStone(String mileStoneName, String mileStoneRegisterDate, String mileStoneMember,
-			String mileStoneManager, String mileStoneReason, String mileStoneStatus) {
+	public int modifiedMileStone(MileStone mileStone) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
