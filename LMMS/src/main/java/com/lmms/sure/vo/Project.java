@@ -15,12 +15,6 @@ public class Project {
 	private String teamName;
 	private String centerName;
 	
-	public String getProjectStartTime() {
-		return projectStartTime;
-	}
-	public void setProjectStartTime(String projectStartTime) {
-		this.projectStartTime = projectStartTime;
-	}
 	public int getProjectId() {
 		return projectId;
 	}
@@ -38,6 +32,12 @@ public class Project {
 	}
 	public void setProjectContent(String projectContent) {
 		this.projectContent = projectContent;
+	}
+	public String getProjectStartTime() {
+		return projectStartTime;
+	}
+	public void setProjectStartTime(String projectStartTime) {
+		this.projectStartTime = projectStartTime;
 	}
 	public String getProjectEndTime() {
 		return projectEndTime;
