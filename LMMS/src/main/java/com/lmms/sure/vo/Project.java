@@ -5,6 +5,7 @@ public class Project {
 	private int projectId;
 	private String projectName;
 	private String projectContent;
+	private String projectStartTime;
 	private String projectEndTime;
 	private String projectMember;
 	private String projectReason;
@@ -14,6 +15,12 @@ public class Project {
 	private String teamName;
 	private String centerName;
 	
+	public String getProjectStartTime() {
+		return projectStartTime;
+	}
+	public void setProjectStartTime(String projectStartTime) {
+		this.projectStartTime = projectStartTime;
+	}
 	public int getProjectId() {
 		return projectId;
 	}
