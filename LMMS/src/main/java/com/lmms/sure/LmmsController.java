@@ -30,5 +30,22 @@ public class LmmsController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/insertProject.do")
+	public String insertProject(HttpServletRequest request,
+			HttpServletResponse response,
+			ModelMap mm,
+			String projectName, String projectContent, String projectStartTime, 
+			String projectEndTime, String projectMember, String projectReason, 
+			String projectManager, String projectRegisterDate, String projectStatus, 
+			String teamName, String centerName) {
+		
+		
+		lmmsService.setProject(projectName, projectContent, projectStartTime,
+				projectEndTime, projectMember, projectReason, projectManager, 
+				projectRegisterDate, projectStatus, teamName, centerName);
+		
+		
+		return "index";
+	}
 	
 }

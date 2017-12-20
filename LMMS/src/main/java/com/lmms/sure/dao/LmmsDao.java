@@ -29,11 +29,11 @@ public interface LmmsDao {
 	
 	@Insert("INSERT into lmms.Project(pName, pContent, pStartTime, pEndTime, pMember, pReason,"
 			+ "pManager, pRegisterDate, pStatus, tName, cName) VALUES(#{projectName}, #{projectContent},"
-			+ "#{projectStartTime}, #{prjectEndTime}, #{projectMember}, #{projectReason},"
+			+ "#{projectStartTime}, #{projectEndTime}, #{projectMember}, #{projectReason},"
 			+ "#{projectManager}, #{projectRegisterDate}, #{projectStatus}, #{teamName}, #{centerName})")
 	int insertProject(Project project);
 	
-	//¾øÀ¸¸é ÀÎ¼­Æ® ÀÖÀ¸¸é ¾÷µ¥ÀÌÆ® Äõ¸®·Î º¯°æ
+	//ê¸°ì¡´ê°’ì´ ì—†ìœ¼ë©´ ì¸ì„œíŠ¸ ìˆìœ¼ë©´ ì—…ë°ì´íŠ¸ë¡œ ë³€ê²½
 	@Insert("INSERT into lmms.MileStone(mName, mRegisterDate, mMember, mManager, mReason,"
 			+ "mStatus, pId) VALUES(#{mileStoneName}, #{mileStoneRegisterDate},"
 			+ "#{mileStoneMember}, #{mileStoneManager}, #{mileStoneReason},"

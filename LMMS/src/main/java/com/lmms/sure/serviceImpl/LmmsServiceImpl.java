@@ -29,11 +29,26 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 
 	@Override
-	public int setProject(String projectName, String projectContent, String projectEndTime, String projectMember,
-			String projectReason, String projectManager, String projectRegisterDate, String projectStatus,
+	public int setProject(String projectName, String projectContent, String projectStartTime, 
+			String projectEndTime, String projectMember, String projectReason, 
+			String projectManager, String projectRegisterDate, String projectStatus, 
 			String teamName, String centerName) {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		Project param = new Project();
+		param.setProjectName(projectName);
+		param.setProjectContent(projectContent);
+		param.setProjectStartTime(projectStartTime);
+		param.setProjectEndTime(projectEndTime);
+		param.setProjectMember(projectMember);
+		param.setProjectReason(projectReason);
+		param.setProjectManager(projectManager);
+		param.setProjectRegisterDate(projectRegisterDate);
+		param.setProjectStatus(projectStatus);
+		param.setTeamName(teamName);
+		param.setCenterName(centerName);
+		
+		return lmmsDao.insertProject(param);
 	}
 
 	@Override
@@ -56,8 +71,9 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 
 	@Override
-	public int modifiedProject(String projectName, String projectContent, String projectEndTime, String projectMember,
-			String projectReason, String projectManager, String projectRegisterDate, String projectStatus,
+	public int modifiedProject(String projectName, String projectContent, String projectStartTime, 
+			String projectEndTime, String projectMember, String projectReason, 
+			String projectManager, String projectRegisterDate, String projectStatus, 
 			String teamName, String centerName) {
 		// TODO Auto-generated method stub
 		return 0;
