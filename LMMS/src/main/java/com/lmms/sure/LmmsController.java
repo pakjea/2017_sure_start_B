@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lmms.sure.service.LmmsService;
 
-
 @Controller
 public class LmmsController {
 	
@@ -30,5 +29,10 @@ public class LmmsController {
 		return "index";
 	}
 	
-	
+	@RequestMapping(value="/deleteProject.do")
+	public String removeProject(HttpServletRequest request,
+			HttpServletResponse response, String projectId){
+		lmmsService.removeProject(Integer.parseInt(projectId));
+		return "index";
+	}
 }
