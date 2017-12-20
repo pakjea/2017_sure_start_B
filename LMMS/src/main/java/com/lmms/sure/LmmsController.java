@@ -36,7 +36,7 @@ public class LmmsController {
 			ModelMap mm,
 			Project model) {
 		
-		if(!model.getName().equals(null))
+		if(model.getName() != null)
 			lmmsService.setProject(model);
 		
 		return "index";
