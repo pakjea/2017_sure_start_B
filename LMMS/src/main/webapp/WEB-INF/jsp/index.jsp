@@ -7,78 +7,103 @@
 <head>
 <meta charset="utf-8">
 <title>Kang Site</title>
-<!-- <link href="../../static/css/manager/body.css" rel="stylesheet"> -->
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/vue@2.4.2"></script>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
 
-</head>
-	<body>
-	<jsp:include page="../common/header.jsp"></jsp:include>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span9" >
-				
-				<br>
-				<div id = "play">
-					<p>
-						<center>
-							<iframe id="player_div" frameborder="0" allowfullscreen="1"
-								 title="YouTube video player" width="800" height="600" v-bind:src="url"></iframe>
-						</center>
-					</p>
-				
-				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
-					<c:forEach var="item" items="${realTimeChart}" varStatus="status">
-					    <li id="li-${item.rank}"><a v-on:click="change('${item.url}')">
-					    <img src="${item.icon}">
-					    <h2>${item.title}</h2>
-					    <p>${item.artist}</p></a>
-					        <a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop" data-id="${item.rank}">add album</a>
-					    </li>
-				    </c:forEach>
-				  
-				</ul>
-				<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
-				    <h3>내 앨범에 추가할꺼?</h3>
-				<p>추가하려면 add 눌러.</p>
-				    <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">add</a>
-				    <a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
-				</div>
-				
-				</div>
-				
-				
-			</div>
-		</div>
-	</div>
-	<jsp:include page="../common/footer.jsp"></jsp:include>
-	</body>
-			
-
-<script type="text/javascript">
+        dataTable.addColumn({ type: 'string', id: 'Project' });
+		dataTable.addColumn({ type: 'string', id: 'Name' });
+		dataTable.addColumn({ type: 'date', id: 'Start' });
+		dataTable.addColumn({ type: 'date', id: 'End' });
 		
-	var play = new Vue({
-		  el: '#play',
-		  data: {
-		    url: '${playList}'
-		  },
-		  methods: {
-			  change: function(item){
-				  allUrl = '${playList}'
-				  temp = item.split('/embed/')[1]
-				  result = 'https://www.youtube.com/embed/' + temp + '?rel=0&autoplay=1;playlist=' + allUrl.split(temp)[1]
-				  this.url = result
-			  }
-		  }
-		})
-	
-	</script>
-	
+		var project = 'Project1';    
+		dataTable.addRows([
+     	['MONTH', '1월', new Date(2016, 11, 01), new Date(2017, 00, 01) ],
+     	['MONTH', '2월', new Date(2017, 00, 01), new Date(2017, 01, 01) ],
+     	['MONTH', '3월', new Date(2017, 01, 01), new Date(2017, 02, 01) ],
+     	['MONTH', '4월', new Date(2017, 02, 01), new Date(2017, 03, 01) ],
+     	['MONTH', '5월', new Date(2017, 03, 01), new Date(2017, 04, 01) ],
+     	['MONTH', '6월', new Date(2017, 04, 01), new Date(2017, 05, 01) ],
+     	['MONTH', '7월', new Date(2017, 05, 01), new Date(2017, 06, 01) ],
+     	['MONTH', '8월', new Date(2017, 06, 01), new Date(2017, 07, 01) ],
+     	['MONTH', '9월', new Date(2017, 07, 01), new Date(2017, 08, 01) ],
+     	['MONTH', '10월', new Date(2017, 08, 01), new Date(2017, 09, 01) ],
+     	['MONTH', '11월', new Date(2017, 09, 01), new Date(2017, 10, 01) ],
+     	['MONTH', '12월', new Date(2017, 10, 01), new Date(2017, 11, 01) ],
+    
+    	['Project1', 'first', new Date(2017, 3, 30), new Date(2017, 5, 15) ],
+    	['Project1', 'second', new Date(2017, 5, 1), new Date(2017, 7, 4) ],
+    	['Project2', 'first', new Date(2017, 3, 30), new Date(2017, 5, 15) ],
+    	['Project2', 'second', new Date(2017, 3, 30), new Date(2017, 5, 15) ],
+    	['Project3', 'first', new Date(2017, 3, 30), new Date(2017, 5, 15) ],
+    	['Project3', 'second', new Date(2017, 3, 10), new Date(2017, 7,1 ) ],
+    	['Project4', 'first', new Date(2017, 3, 10), new Date(2017, 7,1 ) ],
+    	['Project4', 'second', new Date(2017, 4, 10), new Date(2017, 7,1 ) ],
+    	['Project4', 'third', new Date(2017, 5, 10), new Date(2017, 9,1 ) ],
+    	
+     	]);
+     	var options = {
+  		timeline: { groupByRowLabel: true, colorByRowLabel:false},
+     	colors:['#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF'
+     		, '#00BFFF','#F08080','#FF0000']
+		};
+     	
+     	
+        chart.draw(dataTable, options);
+     
+      }
+    </script>
+    
+ 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable
+          ([['X', '1', '2', '3', '4', '5', '6'],
+            [1, 2, null, null, null, null, null],
+            [2, null, 3, null, null, null, null],
+            [3, null, null, 4, null, null, null],
+            [4, null, null, null, 5, null, null],
+            [5, null, null, null, null, 6, null],
+            [6, null, null, null, null, null, 7]
+      ]);
+
+      var options = {
+        legend: 'none',
+        pointSize: 30,
+        series: {
+              0: { pointShape: 'circle' },
+              1: { pointShape: 'triangle' },
+              2: { pointShape: 'square' },
+              3: { pointShape: 'diamond' },
+              4: { pointShape: 'star' },
+              5: { pointShape: 'polygon' }
+          }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);;
+  }
+    
+    </script>
+ 
+  </head>
+  <body>
+    <div id="timeline" style="height: 500px;"></div>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  
+    
+  </body>
 </html>
+       
+	
