@@ -6,11 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lmms.sure.service.LmmsService;
+import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
 
@@ -42,4 +41,39 @@ public class LmmsController {
 		return "index";
 	}
 	
+	@RequestMapping(value="/updateProject")
+	public String updateProject(HttpServletRequest request,
+			HttpServletResponse response,
+			Project model) {
+		
+		if(model.getName() != null)
+			lmmsService.setProject(model);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value="/deleteProject")
+	public String deleteProject(HttpServletRequest request,
+			HttpServletResponse response, String projectId) {
+		lmmsService.removeProject(Integer.parseInt(projectId));
+		return "index";
+	}
+	
+	@RequestMapping(value="/updateMileStone")
+	public String updateMilestone(HttpServletRequest request,
+			HttpServletResponse response,
+			MileStone model) {
+		
+		if(model.getName() != null)
+			lmmsService.setMileStone(model);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value="/deleteMileStone")
+	public String deleteMilestone(HttpServletRequest request,
+			HttpServletResponse response, String mileStoneId) {
+		lmmsService.removeProject(Integer.parseInt(mileStoneId));
+		return "index";
+	}
 }
