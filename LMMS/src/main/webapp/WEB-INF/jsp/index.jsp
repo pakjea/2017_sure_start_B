@@ -66,7 +66,15 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 		<div class="row-fluid">
 			<div class="span9">
 			
-			${allProject }
+				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
+					<c:forEach var="item" items="${allProject}" varStatus="status">
+					    <li id="li-"><a v-on:click="change('')">
+					    <h2>${item.content}</h2>
+					    <p>${item.name}</p></a>
+					    </li>
+				    </c:forEach>
+				  
+				</ul>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="hello world">프로젝트 수정</button>
