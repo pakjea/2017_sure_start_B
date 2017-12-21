@@ -57,6 +57,16 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 	  modal.find('.modal-body input').val(recipient)
 	})
 	
+	$('#createMileStoneModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('New message to ' + recipient)
+	  modal.find('.modal-body input').val(recipient)
+	})
+	
 </script>
 
 </head>
@@ -78,6 +88,7 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="hello world">프로젝트 수정</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-whatever="hello world">마일스톤 생성</button>
 
 <!-- 프로젝트 생성 버튼 구현 내용 -->
 <div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog" aria-labelledby="createProjectModalLabel" aria-hidden="true">
@@ -169,6 +180,44 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
        		 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
         		 <button type="button" class="btn btn-primary">확인</button>
      	  </div>
+          
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- 마일스톤 생성 버튼 구현 내용 -->
+<div class="modal fade" id="createMileStoneModal" tabindex="-1" role="dialog" aria-labelledby="createMileStoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createMileStoneModalLabel">마일스톤 생성</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/insertMileStone" method="post">
+          <div class="form-group">
+          	<label for="projectId" class="col-form-label">프로젝트 ID</label>
+            <input type="text" class="form-control" id="projectId" name="projectId">
+            <label for="mileStoneName" class="col-form-label">마일스톤 이름</label>
+            <input type="text" class="form-control" id="mileStoneName" name="name">
+            <label for="mileStoneMember" class="col-form-label">프로젝트 인원</label>
+            <input type="text" class="form-control" id="mileStoneMember" name ="member">
+            <label for="mileStoneManager" class="col-form-label">담당자</label>
+            <input type="text" class="form-control" id="mileStoneManager" name ="manager">
+            <label for="mileStoneStatus" class="col-form-label">상태</label>
+            <input type="text" class="form-control" id="mileStoneStatus" name ="status">
+            <label for="mileStoneReason" class="col-form-label">이유</label>
+            <textarea class="form-control" id="mileStoneReason" name="reason"></textarea>
+          </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+        <button type="submit" class="btn btn-primary">확인</button>
+         </div>
           
         </form>
       </div>

@@ -40,6 +40,13 @@ public class LmmsController {
 		return "index";
 	}
 	
-	
+	@RequestMapping(value="/insertMileStone")
+	public String insertMileStone(HttpServletRequest request,
+			HttpServletResponse response,
+			ModelMap mm) {
+		
+		
+		return "index";
+	}
 	
 }
