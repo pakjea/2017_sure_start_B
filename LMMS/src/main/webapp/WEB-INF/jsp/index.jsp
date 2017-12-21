@@ -10,7 +10,7 @@
 
 
 <meta charset="utf-8">
-<title>Kang Site</title>
+<title>RoadMap Management System</title>
 <!-- <link href="../../static/css/manager/body.css" rel="stylesheet"> -->
 
 <link rel="stylesheet"
@@ -67,6 +67,16 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 	  modal.find('.modal-body input').val(recipient)
 	})
 	
+	$('#viewProjectModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('New message to ' + recipient)
+	  modal.find('.modal-body input').val(recipient)
+	})
+	
 </script>
 
 </head>
@@ -76,19 +86,26 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 		<div class="row-fluid">
 			<div class="span9">
 			
+			
+			<div class="row">
+			<div class="col-6"></div>
+			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
+			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="hello world">프로젝트 수정</button>
+			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-whatever="hello world">마일스톤 생성</button>
+			</div>
+			
+			
 				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
 					<c:forEach var="item" items="${allProject}" varStatus="status">
-					    <li id="li-"><a v-on:click="change('')">
+					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item.id}"><a v-on:click="change('')">
 					    <h2>${item.content}</h2>
-					    <p>${item.name}</p></a>
+					    <p>${item.name}</p></a></div>
 					    </li>
 				    </c:forEach>
 				  
 				</ul>
+				
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="hello world">프로젝트 수정</button>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-whatever="hello world">마일스톤 생성</button>
 
 <!-- 프로젝트 생성 버튼 구현 내용 -->
 <div class="modal fade" id="createProjectModal" tabindex="-1" role="dialog" aria-labelledby="createProjectModalLabel" aria-hidden="true">
@@ -187,6 +204,49 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
     </div>
   </div>
 </div>
+
+<!-- 프로젝트 뷰 구현 내용 -->
+<div class="modal fade" id="viewProjectModal" tabindex="-1" role="dialog" aria-labelledby="viewProjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewProjectModalLabel">프로젝트 내용</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="projectName" class="col-form-label">프로젝트 이름</label>
+            <input type="text" class="form-control" id="projectName" name="name" value="${allProject[0].name}">
+            <label for="projectStartTime" class="col-form-label">시작 날짜</label>
+            <input type="text" class="form-control" id="projectStartTime" name= "startTime" value="${allProject[0].startTime}">
+            <label for="projectEndTime" class="col-form-label">종료 날짜</label>
+            <input type="text" class="form-control" id="projectEndTime" name ="endTime" value="${allProject[0].endTime}">
+            <label for="projectMember" class="col-form-label">프로젝트 인원</label>
+            <input type="text" class="form-control" id="projectMember" name ="member" value="${allProject[0].member}">
+            <label for="projectManager" class="col-form-label">담당자</label>
+            <input type="text" class="form-control" id="projectManager" name ="manager" value="${allProject[0].manager}">
+            <label for="teamName" class="col-form-label">팀 이름</label>
+            <input type="text" class="form-control" id="teamName" name="teamName" value="${allProject[0].teamName}">
+            <label for="centerName" class="col-form-label">센터(실) 이름</label>
+            <input type="text" class="form-control" id="centerName" name ="centerName" value="${allProject[0].centerName}">
+            <input type="hidden" id="projectStatus" name="status" value="N">
+          </div>
+          <div class="form-group">
+            <label for="projectContent" class="col-form-label">프로젝트 내용</label>
+            <textarea class="form-control" id="projectContent" name="content"></textarea>
+          </div>
+          
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+         </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
 <!-- 마일스톤 생성 버튼 구현 내용 -->
 <div class="modal fade" id="createMileStoneModal" tabindex="-1" role="dialog" aria-labelledby="createMileStoneModalLabel" aria-hidden="true">

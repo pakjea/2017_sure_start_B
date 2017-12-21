@@ -3,5 +3,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <hr>
 <footer>
-	<p>&copy; Kang Company 2017</p>
+	<p>&copy; Team LMMS</p>
 </footer>
