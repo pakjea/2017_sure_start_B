@@ -6805,3 +6805,6 @@ Caused by: java.io.FileNotFoundException: C:\Program Files\Git\mingw64\share\git
 	at org.eclipse.swt.graphics.ImageLoader.load(ImageLoader.java:172)
 	... 75 more
 >>>>>>> origin/LMMS11
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2017-12-21 11:16:41.907
+!MESSAGE Couldn't launch LMMS because no tasks have been selected

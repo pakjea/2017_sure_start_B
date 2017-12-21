@@ -33,11 +33,12 @@ public interface LmmsDao {
 			+ "#{manager}, NOW(), #{status}, #{teamName}, #{centerName})")
 	int insertProject(Project project);
 	
-	//기존값이 없으면 인서트 있으면 업데이트로 변경
-	@Insert("INSERT into lmms.MileStone(name, registerDate, member, manager, reason,"
-			+ "status, projectId) VALUES(#{name}, #{registerDate},"
-			+ "#{member}, #{manager}, #{reason},"
-			+ " #{status}, #{projectId})")
+	@Insert("INSERT into lmms.MileStone(name, registerDate, content, member, manager, reason, "
+			+ "status, projectId) VALUES(#{name}, #{registerDate}, #{content}"
+			+ "#{member}, #{manager}, #{reason}, "
+			+ "#{status}, #{projectId}) ON DUPLICATE KEY UPDATE "
+			+ "name = #{name}, registerDate = #{registerDate}, content = #{content}, member = #{member}, "
+			+ "manager = #{manager}, reason = #{reason}, status = #{status}, projectId = #{projectId}")
 	int insertMileStone(MileStone mileStone);
 	
 	@Delete("DELETE FROM lmms.Project WHERE pId = #{id}")

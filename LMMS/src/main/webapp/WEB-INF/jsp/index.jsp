@@ -126,7 +126,7 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
           
           <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        <button type="submit" class="btn btn-primary">확인</button>
+        <button type="submit" class="btn btn-primary" onclick="location.reload()">확인</button>
          </div>
           
         </form>

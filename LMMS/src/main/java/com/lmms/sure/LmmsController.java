@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lmms.sure.service.LmmsService;
+import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
 
@@ -34,19 +35,24 @@ public class LmmsController {
 			ModelMap mm,
 			Project model) {
 		
-		if(model.getName() != null)
+		if(model.getName() != null) {
 			lmmsService.setProject(model);
-		
-		return "index";
+		}
+			
+		return "redirect:index";
 	}
 	
 	@RequestMapping(value="/insertMileStone")
 	public String insertMileStone(HttpServletRequest request,
 			HttpServletResponse response,
-			ModelMap mm) {
+			ModelMap mm,
+			MileStone model) {
 		
+		if(model.getName() != null) {
+			lmmsService.setMileStone(model);
+		}
 		
-		return "index";
+		return "redirect:index";
 	}
 	
 }

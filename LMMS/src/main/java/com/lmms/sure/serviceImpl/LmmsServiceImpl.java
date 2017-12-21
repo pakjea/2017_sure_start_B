@@ -37,7 +37,7 @@ public class LmmsServiceImpl implements LmmsService{
 	@Override
 	public int setMileStone(MileStone mileStone) {
 		// TODO Auto-generated method stub
-		return 0;
+		return lmmsDao.insertMileStone(mileStone);
 	}
 
 	@Override
