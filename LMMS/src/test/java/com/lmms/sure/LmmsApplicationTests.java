@@ -9,11 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.lmms.sure.service.LmmsService;
-<<<<<<< HEAD
-=======
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
->>>>>>> origin/LMMS55
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -102,11 +99,6 @@ public class LmmsApplicationTests {
 	
 	@Test
 	public void contextLoads() {
-<<<<<<< HEAD
-		
-	}
-	
-=======
 		assertEquals(true, testCreateProject());
 	}
 	
@@ -125,7 +117,4 @@ public class LmmsApplicationTests {
 		assertEquals(true, testDeleteMileStone());
 	}
 	
-	
-
->>>>>>> origin/LMMS55
 }

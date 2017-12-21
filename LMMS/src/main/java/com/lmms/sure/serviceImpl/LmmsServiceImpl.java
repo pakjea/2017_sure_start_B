@@ -37,7 +37,6 @@ public class LmmsServiceImpl implements LmmsService{
 		project = lmmsDao.selectProject();
 		String json;
 		Iterator it = project.iterator();
-		int i=0;
 		while(it.hasNext()) {
 			json = gson.toJson(it.next());
 			jsonProject.add(new JSONObject(json));

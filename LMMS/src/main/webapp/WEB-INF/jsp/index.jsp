@@ -29,6 +29,34 @@
 		<div class="row-fluid">
 			<div class="span9">
 			
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+			
+			
 			<div class="row">
 			<div class="col-6"></div>
 			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal">프로젝트 생성</button>
@@ -38,10 +66,10 @@
 			
 			
 				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
-					<c:forEach var="item" items="${allProject}" varStatus="status">
-					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}"><a v-on:click="change('')">
-					    <h2>${item.content}</h2>
-					    <p>${item.name}</p></a></div>
+					<c:forEach var="item" items="${allProjectJson}" varStatus="status">
+					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}">
+					    <h2>${item}</h2>
+					    <p>${item}</p></div>
 					    </li>
 				    </c:forEach>
 				  
