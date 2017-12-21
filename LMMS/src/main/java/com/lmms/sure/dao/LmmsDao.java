@@ -41,10 +41,10 @@ public interface LmmsDao {
 			+ "manager = #{manager}, reason = #{reason}, status = #{status}, projectId = #{projectId}")
 	int insertMileStone(MileStone mileStone);
 	
-	@Delete("DELETE FROM lmms.Project WHERE pId = #{id}")
+	@Delete("DELETE FROM lmms.Project WHERE Id = #{id}")
 	int deleteProject(int projectId);
 	
-	@Delete("DELETE FROM lmms.MileStone WHERE mId = #{id}")
+	@Delete("DELETE FROM lmms.MileStone WHERE Id = #{id}")
 	int deleteMileStone(int mileStoneId);
 	
 
