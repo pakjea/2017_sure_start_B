@@ -1,10 +1,15 @@
 package com.lmms.sure.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.lmms.sure.dao.LmmsDao;
 import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
@@ -20,6 +25,25 @@ public class LmmsServiceImpl implements LmmsService{
 	public List<Project> getProject() {
 		// TODO Auto-generated method stub
 		return lmmsDao.selectProject();
+	}
+	
+	@Override
+	public List<JSONObject> getProjectJSON() throws JSONException {
+		// TODO Auto-generated method stub
+		List<Project> project = new ArrayList<>();
+		List<JSONObject> jsonProject = new ArrayList<>();
+		
+		Gson gson = new Gson();
+		project = lmmsDao.selectProject();
+		String json;
+		Iterator it = project.iterator();
+		int i=0;
+		while(it.hasNext()) {
+			json = gson.toJson(it.next());
+			jsonProject.add(new JSONObject(json));
+		}
+		
+		return jsonProject;
 	}
 
 	@Override
@@ -61,6 +85,8 @@ public class LmmsServiceImpl implements LmmsService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	
 	
 	
 	

@@ -2,6 +2,9 @@ package com.lmms.sure.service;
 
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
@@ -9,6 +12,8 @@ import com.lmms.sure.vo.Project;
 public interface LmmsService {
 
 	List<Project> getProject();
+	
+	List<JSONObject> getProjectJSON() throws JSONException;
 	
 	List<MileStone> getMileStone();
 	

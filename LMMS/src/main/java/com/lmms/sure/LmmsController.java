@@ -1,8 +1,12 @@
 package com.lmms.sure;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,9 +26,11 @@ public class LmmsController {
 	@RequestMapping(value="/")
 	public String index(HttpServletRequest request,
 			HttpServletResponse response,
-			ModelMap mm){
+			ModelMap mm) throws JSONException{
 		
 		mm.addAttribute("allProject", lmmsService.getProject());
+		
+		mm.addAttribute("allProjectJson",lmmsService.getProjectJSON());
 		
 		return "index";
 	}
@@ -69,7 +75,9 @@ public class LmmsController {
 	@RequestMapping(value="/deleteProject")
 	public String deleteProject(HttpServletRequest request,
 			HttpServletResponse response, String projectId) {
+		
 		lmmsService.removeProject(Integer.parseInt(projectId));
+		
 		return "index";
 	}
 	
@@ -87,7 +95,9 @@ public class LmmsController {
 	@RequestMapping(value="/deleteMileStone")
 	public String deleteMilestone(HttpServletRequest request,
 			HttpServletResponse response, String mileStoneId) {
+		
 		lmmsService.removeProject(Integer.parseInt(mileStoneId));
+		
 		return "index";
 	}
 }

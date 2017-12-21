@@ -34,10 +34,10 @@ public interface LmmsDao {
 	int insertProject(Project project);
 	
 	@Insert("INSERT into lmms.MileStone(name, registerDate, content, member, manager, reason, "
-			+ "status, projectId) VALUES(#{name}, #{registerDate}, #{content}"
+			+ "status, projectId) VALUES(#{name}, NOW(), #{content}, "
 			+ "#{member}, #{manager}, #{reason}, "
 			+ "#{status}, #{projectId}) ON DUPLICATE KEY UPDATE "
-			+ "name = #{name}, registerDate = #{registerDate}, content = #{content}, member = #{member}, "
+			+ "name = #{name}, registerDate = NOW(), content = #{content}, member = #{member}, "
 			+ "manager = #{manager}, reason = #{reason}, status = #{status}, projectId = #{projectId}")
 	int insertMileStone(MileStone mileStone);
 	
