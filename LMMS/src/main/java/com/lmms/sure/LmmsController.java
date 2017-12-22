@@ -3,6 +3,8 @@ package com.lmms.sure;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ import com.lmms.sure.vo.Project;
 @Controller
 public class LmmsController {
 	
+	private static final Logger logger = LoggerFactory
+			.getLogger(LmmsController.class);
+	
 	@Autowired
 	private LmmsService lmmsService;
 	
@@ -25,14 +30,18 @@ public class LmmsController {
 			HttpServletResponse response,
 			ModelMap mm) throws JSONException{
 		
+		logger.debug("index");
+		logger.info("index");
+		
 		mm.addAttribute("allProject", lmmsService.getProject());		
+		
 		mm.addAttribute("allProjectJson",lmmsService.getProjectJSON());
+		
 		mm.addAttribute("allMileStoneJson", lmmsService.getMileStoneJSON());
 		
 		mm.addAttribute("allProjectJsonArray", lmmsService.getProjectJSONArray());
 		
 		mm.addAttribute("allMileStone", lmmsService.getMileStone());
-		
 		
 		return "index";
 	}
@@ -42,6 +51,9 @@ public class LmmsController {
 			HttpServletResponse response,
 			ModelMap mm,
 			Project model) {
+		
+		logger.debug("insertProject");
+		logger.info("insertProject");
 		
 		if(model.getName() != null) {
 			lmmsService.setProject(model);
@@ -56,6 +68,9 @@ public class LmmsController {
 			ModelMap mm,
 			MileStone model) {
 		
+		logger.debug("insertMileStone");
+		logger.info("insertMileStone");
+		
 		if(model.getName() != null) {
 			lmmsService.setMileStone(model);
 		}
@@ -68,6 +83,9 @@ public class LmmsController {
 			HttpServletResponse response,
 			Project model) {
 		
+		logger.debug("updateProject");
+		logger.info("updateProject");
+		
 		if(model.getName() != null)
 			lmmsService.setProject(model);
 		
@@ -77,6 +95,9 @@ public class LmmsController {
 	@RequestMapping(value="/deleteProject")
 	public String deleteProject(HttpServletRequest request,
 			HttpServletResponse response, String projectId) {
+		
+		logger.debug("deleteProject");
+		logger.info("deleteProject");
 		
 		lmmsService.removeProject(Integer.parseInt(projectId));
 		
@@ -88,6 +109,9 @@ public class LmmsController {
 			HttpServletResponse response,
 			MileStone model) {
 		
+		logger.debug("updateMileStone");
+		logger.info("updateMileStone");
+		
 		if(model.getName() != null)
 			lmmsService.setMileStone(model);
 		
@@ -98,6 +122,9 @@ public class LmmsController {
 	@RequestMapping(value="/deleteMileStone")
 	public String deleteMilestone(HttpServletRequest request,
 			HttpServletResponse response, String mileStoneId) {
+		
+		logger.debug("deleteMileStone");
+		logger.info("deleteMileStone");
 		
 		lmmsService.removeProject(Integer.parseInt(mileStoneId));
 		

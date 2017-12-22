@@ -30,6 +30,8 @@
 		<div class="row-fluid">
 			<div class="span9">
 			
+			${allMileStoneJson }
+			
 			<jsp:include page="./timeline2.jsp"></jsp:include>
 			
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -169,8 +171,8 @@
             
           </div>
           <div class="form-group">
-            <label for="projectContent" class="col-form-label" name="">프로젝트 내용</label>
-            <textarea class="form-control" id="projectContent"></textarea>
+            <label for="projectContent" class="col-form-label">프로젝트 내용</label>
+            <textarea class="form-control" id="projectContent" name="content"></textarea>
           </div>
           
           <div class="modal-footer">

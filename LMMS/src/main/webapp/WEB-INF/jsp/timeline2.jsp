@@ -68,7 +68,6 @@ container.onclick = function () {
 	
 	if(props.item!=null&&props.group == "engine"){
 		alert("엔진팀 팀프로젝트 입니다")
-		
 	}else if(props.item!=null&&props.group == "ep"){
 		alert("EP 팀 프로젝트입니다");
 	}else if(props.item!=null&&props.group == "controller"){

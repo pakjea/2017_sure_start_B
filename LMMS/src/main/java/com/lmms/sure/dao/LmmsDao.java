@@ -24,8 +24,8 @@ public interface LmmsDao {
 	@Select("SELECT * FROM lmms.MileStone")
 	List<MileStone> selectMileStone();
 	
-	@Select("SELECT * FROM lmms.Project WHERE id=#{id}")
-	Project selectOneProject(int projectId);
+	@Select("SELECT teamName FROM lmms.Project WHERE id=#{id}")
+	String selectOneProject(int projectId);
 	
 	@Select("SELECT * FROME lmms.Team")
 	List<Team> selectTeam();

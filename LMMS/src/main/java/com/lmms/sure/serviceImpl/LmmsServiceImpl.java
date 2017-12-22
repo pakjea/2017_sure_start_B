@@ -40,7 +40,7 @@ public class LmmsServiceImpl implements LmmsService{
 					"\", \"start\": \"" + pro.getStartTime() +
 					"\", \"end\": \"" + pro.getEndTime() +
 					"\", \"group\": \"" + pro.getTeamName() +
-					"\", \"title\": \"" + pro.getReason() +
+					"\", \"title\": \"" + pro.getContent() + " : " + pro.getReason() +
 					"\"}";
 
 			jsonProject.add(json);
@@ -53,24 +53,23 @@ public class LmmsServiceImpl implements LmmsService{
 	public List<String> getMileStoneJSON() {
 		// TODO Auto-generated method stub
 		List<MileStone> mileStone = new ArrayList<>();
-		List<String> jsonMileStone = new ArrayList<>();
+		List<String> mileStoneJson = new ArrayList<>();
 	
 		mileStone = lmmsDao.selectMileStone();
 		String json;
 		
-		//{id: 16, content: '', start: '2017-11-15', group: "ep_mile", title:'start: 2017-03-15',style:"border-color: black; color: black; background-color:black;",type:""},
 		for(MileStone ms : mileStone) {
-//			json = "{\"id\":" + ms.getId() + 
-//					", \"content\": \""+ ms.getContent() +
-//					"\", \"start\": \"" + ms.getRegisterDate() +
-//					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()).getTeamName()+"_mile" +
-//					"\", \"title\": \"" + ms.getReason() +
-//					"\", \"style\":\"border-color: black; color: black; background-color:black;\"" +
-//					"\"type\":\"\"}";
-//			jsonMileStone.add(json);
-//			json ="";
+			json = "{\"id\":" + ms.getId() + 
+					", \"content\": \""+ ms.getContent() +
+					"\", \"start\": \"" + ms.getRegisterDate() +
+					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()) + "_mile" +
+					"\", \"title\": \"" + ms.getContent() + " : " + ms.getReason() +
+					"\", \"style\":\"border-color: black; color: black; background-color:black;\"" +
+					"\"type\":\"\"}";
+			mileStoneJson.add(json);
+			json ="";
 		}
-		return jsonMileStone;
+		return mileStoneJson;
 	}
 
 	
