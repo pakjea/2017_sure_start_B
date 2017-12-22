@@ -25,9 +25,9 @@ public class LmmsController {
 			HttpServletResponse response,
 			ModelMap mm) throws JSONException{
 		
-		mm.addAttribute("allProject", lmmsService.getProject());
-		
+		mm.addAttribute("allProject", lmmsService.getProject());		
 		mm.addAttribute("allProjectJson",lmmsService.getProjectJSON());
+		mm.addAttribute("allMileStoneJson", lmmsService.getMileStoneJSON());
 		
 		return "index";
 	}
