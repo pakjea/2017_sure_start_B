@@ -25,13 +25,12 @@
 </head>
 <body>
 	<jsp:include page="../common/header.jsp"></jsp:include>
+	
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span9">
 			
-			<div id="timeline-tooltip" style="height: 500px;"></div>
-			
-			
+			<jsp:include page="./timeline2.jsp"></jsp:include>
 			
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -318,50 +317,3 @@
 	
 </script>
 	
-	
-<script type="text/javascript">
-	google.charts.load('current', {'packages':['timeline']});
-    google.charts.setOnLoadCallback(drawChart);
-  	function over(){
-		alert("mouse over");
-		
-	}
-	function out(){
-		alert("mouse out");
-	}
-	
-      function drawChart() {
-    	  var container = document.getElementById('timeline-tooltip');
-        var chart = new google.visualization.Timeline(container);
-        var dataTable = new google.visualization.DataTable();
-
-        dataTable.addColumn({ type: 'string', id: 'Project' });
-		dataTable.addColumn({ type: 'string', id: 'Name' });
-		dataTable.addColumn({ type: 'date', id: 'Start' });
-		dataTable.addColumn({ type: 'date', id: 'End' });
-		
-		var project = 'Project1';  
-		
-		//사용자 정의 툴팁 위한 col
-		dataTable.addcolumn({type:'string',role:'tooltip'});
-		
-	
-		dataTable.addRows([
-     	['MONTH' ,'1월', new Date(2016, 11, 01), new Date(2017, 00, 01), 'ㄴㅇㄹ'],
-     	]);
-		
-		
-		
-     	var options = {
-  		timeline: { groupByRowLabel: true, colorByRowLabel:false},
-     	colors:['#00BFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF'
-     		, '#00BFFF','#F08080','#FF0000']
-		};
-     	
-     	var chart 
-     	
-        chart.draw(dataTable, options);
-        
-     
-      }
-</script>
