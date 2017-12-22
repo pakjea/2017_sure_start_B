@@ -29,6 +29,11 @@ public class LmmsController {
 		mm.addAttribute("allProjectJson",lmmsService.getProjectJSON());
 		mm.addAttribute("allMileStoneJson", lmmsService.getMileStoneJSON());
 		
+		mm.addAttribute("allProjectJsonArray", lmmsService.getProjectJSONArray());
+		
+		mm.addAttribute("allMileStone", lmmsService.getMileStone());
+		
+		
 		return "index";
 	}
 	

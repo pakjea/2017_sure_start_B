@@ -64,7 +64,7 @@
 			<div class="row">
 			<div class="col-6"></div>
 
-			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
+			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="">프로젝트 생성</button>
 
 			</div>
 			
@@ -77,11 +77,14 @@
 					    <p> ${item.startTime} ~ ${item.endTime} </p></div>
 					    </li>
 				    </c:forEach>
+				    <c:forEach var="item" items="${allMileStone}" varStatus="status">
+					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}">
+					    <h2>${item}</h2>
+					    <p>${item}</p></div>
+					    </li>
+				    </c:forEach>
 				  
 				</ul>
-				
-				
-				
 
 
 <!-- 프로젝트 생성 버튼 구현 내용 -->
@@ -346,4 +349,3 @@
 	
 	
 </script>
-	

@@ -12,6 +12,8 @@ import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
+import net.minidev.json.JSONArray;
+
 @Service
 public class LmmsServiceImpl implements LmmsService{
 
@@ -40,6 +42,7 @@ public class LmmsServiceImpl implements LmmsService{
 					"\", \"group\": \"" + pro.getTeamName() +
 					"\", \"title\": \"" + pro.getReason() +
 					"\"}";
+
 			jsonProject.add(json);
 			json ="";
 		}
@@ -69,6 +72,7 @@ public class LmmsServiceImpl implements LmmsService{
 		}
 		return jsonMileStone;
 	}
+
 	
 	@Override
 	public List<MileStone> getMileStone() {
@@ -110,8 +114,10 @@ public class LmmsServiceImpl implements LmmsService{
 		return 0;
 	}
 
-	
-	
-	
-	
+	@Override
+	public JSONArray getProjectJSONArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
