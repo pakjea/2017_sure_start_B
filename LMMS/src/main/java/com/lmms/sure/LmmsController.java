@@ -81,6 +81,19 @@ public class LmmsController {
 	}
 	
 
+	@RequestMapping(value="/timeline2")
+	public String timeline(HttpServletRequest request,
+			HttpServletResponse response,
+			ModelMap mm){
+	/*	
+		realTime = lmmsService.getRealTimeChart();
+		mm.addAttribute("menu", lmmsService.getMenu());
+		mm.addAttribute("realTimeChart", realTime);
+		mm.addAttribute("playList", getPlayList(realTime));*/
+		
+		return "timeline2";
+	}
+	
 
 	@RequestMapping(value="/updateMileStone")
 	public String updateMilestone(HttpServletRequest request,

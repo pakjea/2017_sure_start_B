@@ -29,7 +29,7 @@
 /* 긴 문자열은 보기 좋게 미리 선언 */
 html5aroundImg='<img src="http://html5around.com/wordpress/wp-content/uploads/2016/12/html5around_155px.png" width=155px height=auto>';
 html5aroundMsg='fucker';
-lbnestGroup=["cs","qs"];
+lbnestGroup=["cs","qs","engine","ep","engine_mile","ep_mile","corver","stats","corver_mile","stats_mile"];
 csnestGroup=["engine","ep","engine_mile","ep_mile"];
 qsnestGroup=["corver","stats","corver_mile","stats_mile"];
 carnestGroup=["controller","infor","bigdata","controller_mile","infor_mile","bigdata_mile"];
@@ -38,27 +38,27 @@ var container = document.getElementById('visualization');
 // group 생성, 일부러 nested 그룹도 생성 	
 var groups = new vis.DataSet([
 	
-	{id: "lab", content: '연구실', nestedGroups:lbnestGroup },
+	  {id: "lab", content: '연구실', nestedGroups:lbnestGroup },
 	
-	  {id: "cs", content: 'cs실', nestedGroups:csnestGroup },
-	  {id: "engine", content: "엔진팀"},
-	  {id: "engine_mile", content: " "},
-	  {id: "ep", content: 'EP팀'},
-	  {id: "ep_mile", content: ' '},
+	  {id: "cs", content: 'cs실', nestedGroups:csnestGroup ,style:'background-color:#FBF2EF;'},
+	  {id: "ep", content: 'EP팀',style:'background-color:#FBF2EF;'},
+	  {id: "ep_mile", content: ' ',style:'background-color:#FBF2EF;'},
+	  {id: "engine", content: "엔진팀",style:'background-color:#FBF2EF;'},
+	  {id: "engine_mile", content: " ",style:'background-color:#FBF2EF;'},
 	  
-	  {id: "carsol", content: '차량솔루션센터', nestedGroups:carnestGroup },
-	  {id: "controller", content: '제어기솔루션팀'},
-	  {id: "controller_mile", content: ' '},
-	  {id: "infor", content: '인포에이먼트'},
-	  {id: "infor_mile", content: ' '},
-	  {id: "bigdata", content: '빅데이터'},
-	  {id: "bigdata_mile", content: ' '},
+	  {id: "qs", content: 'qs실', nestedGroups:qsnestGroup ,style:'background-color:#F3F781;'},
+	  {id: "corver", content: "corver팀",style:'background-color:#F3F781;'},
+	  {id: "corver_mile", content: " ",style:'background-color:#F3F781;'},
+	  {id: "stats", content: 'stats팀',style:'background-color:#F3F781;'},
+	  {id: "stats_mile", content: ' ',style:'background-color:#F3F781;'},
 	  
-	  {id: "qs", content: 'qs실', nestedGroups:qsnestGroup },
-	  {id: "corver", content: "corver팀"},
-	  {id: "corver_mile", content: " "},
-	  {id: "stats", content: 'stats팀'},
-	  {id: "stats_mile", content: ' '},
+	  {id: "carsol", content: '차량솔루션센터', nestedGroups:carnestGroup,style:'background-color:#81F781;' },
+	  {id: "controller", content: '제어기솔루션팀',style:'background-color:#81F781;'},
+	  {id: "controller_mile", content: ' ',style:'background-color:#81F781;'},
+	  {id: "infor", content: '인포에이먼트',style:'background-color:#81F781;'},
+	  {id: "infor_mile", content: ' ',style:'background-color:#81F781;'},
+	  {id: "bigdata", content: '빅데이터',style:'background-color:#81F781;'},
+	  {id: "bigdata_mile", content: ' ',style:'background-color:#81F781;'},
 ]);
 
 // 각 그룹에 표시할 데이타 생성 및 연결
