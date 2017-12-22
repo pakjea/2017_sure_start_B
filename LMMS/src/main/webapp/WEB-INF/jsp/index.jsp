@@ -30,8 +30,6 @@
 		<div class="row-fluid">
 			<div class="span9">
 			
-			${allMileStoneJson }
-			
 			<jsp:include page="./timeline2.jsp"></jsp:include>
 			
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,8 +58,6 @@
     </div>
   </div>
 </div>
-			
-			
 
 			<div class="row">
 			<div class="col-6"></div>
@@ -346,8 +342,6 @@
 	  $('#modifiedProjectModal').find('.modal-body #projectId').val(jsonItem.id);
 	  
 	})
-	
-	
 	
 	
 </script>
