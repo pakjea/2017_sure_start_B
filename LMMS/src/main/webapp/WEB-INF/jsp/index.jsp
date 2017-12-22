@@ -62,9 +62,9 @@
 			
 			<div class="row">
 			<div class="col-6"></div>
-			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal">프로젝트 생성</button>
-			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal">프로젝트 수정</button>
-			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal">마일스톤 생성</button>
+
+			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
+
 			</div>
 			
 			
@@ -138,7 +138,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/updateProject" method="post">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
             <input type="text" class="form-control" id="projectName">
@@ -168,7 +168,7 @@
           
           <div class="modal-footer">
        		 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        		 <button type="button" class="btn btn-primary">확인</button>
+        		 <button type="submit" class="btn btn-primary" onclick="location.reload()">확인</button>
      	  </div>
           
         </form>
@@ -191,27 +191,30 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
-            <input type="text" class="form-control" id="projectName" name="name" value="${allProject[0].name}">
+            <input type="text" class="form-control" id="projectName" name="name" value="${allProject[0].name}" disabled>
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name= "startTime" value="${allProject[0].startTime}">
+            <input type="text" class="form-control" id="projectStartTime" name= "startTime" value="${allProject[0].startTime}" disabled>
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name ="endTime" value="${allProject[0].endTime}">
+            <input type="text" class="form-control" id="projectEndTime" name ="endTime" value="${allProject[0].endTime}" disabled>
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
-            <input type="text" class="form-control" id="projectMember" name ="member" value="${allProject[0].member}">
+            <input type="text" class="form-control" id="projectMember" name ="member" value="${allProject[0].member}" disabled>
             <label for="projectManager" class="col-form-label">담당자</label>
-            <input type="text" class="form-control" id="projectManager" name ="manager" value="${allProject[0].manager}">
+            <input type="text" class="form-control" id="projectManager" name ="manager" value="${allProject[0].manager}" disabled>
             <label for="teamName" class="col-form-label">팀 이름</label>
-            <input type="text" class="form-control" id="teamName" name="teamName" value="${allProject[0].teamName}">
+            <input type="text" class="form-control" id="teamName" name="teamName" value="${allProject[0].teamName}" disabled>
             <label for="centerName" class="col-form-label">센터(실) 이름</label>
-            <input type="text" class="form-control" id="centerName" name ="centerName" value="${allProject[0].centerName}">
+            <input type="text" class="form-control" id="centerName" name ="centerName" value="${allProject[0].centerName}" disabled>
             <input type="hidden" id="projectStatus" name="status" value="N">
           </div>
           <div class="form-group">
             <label for="projectContent" class="col-form-label">프로젝트 내용</label>
-            <textarea class="form-control" id="projectContent" name="content"></textarea>
+            <textarea class="form-control" id="projectContent" name="content" disabled></textarea>
           </div>
           
           <div class="modal-footer">
+        <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="${allProject[0]}" data-dismiss="modal">프로젝트 수정</button>
+        <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-dismiss="modal">마일스톤 등록</button>
+        
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
          </div>
       </div>
@@ -235,23 +238,24 @@
         <form action="/insertMileStone" method="post">
           <div class="form-group">
           	<label for="projectId" class="col-form-label">프로젝트 ID</label>
-            <input type="text" class="form-control" id="projectId" name="projectId">
+            <input type="text" class="form-control" name="projectId">
             <label for="mileStoneName" class="col-form-label">마일스톤 이름</label>
-            <input type="text" class="form-control" id="mileStoneName" name="name">
+            <input type="text" class="form-control" name="name">
             <label for="mileStoneMember" class="col-form-label">프로젝트 인원</label>
-            <input type="text" class="form-control" id="mileStoneMember" name ="member">
+            <input type="text" class="form-control" name ="member">
             <label for="mileStoneContent" class="col-form-label">마일스톤 내용</label>
-            <input type="text" class="form-control" id="mileStoneContent" name ="content">
+            <input type="text" class="form-control" name ="content">
             <label for="mileStoneManager" class="col-form-label">담당자</label>
-            <input type="text" class="form-control" id="mileStoneManager" name ="manager">
+            <input type="text" class="form-control" name ="manager">
             <label for="mileStoneStatus" class="col-form-label">상태</label>
-            <input type="text" class="form-control" id="mileStoneStatus" name ="status">
+            <input type="text" class="form-control" name ="status">
             <label for="mileStoneReason" class="col-form-label">이유</label>
-            <textarea class="form-control" id="mileStoneReason" name="reason"></textarea>
+            <textarea class="form-control" name="reason"></textarea>
           </div>
           <div class="modal-footer">
+          
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-        <button type="submit" class="btn btn-primary">확인</button>
+        <button type="submit" class="btn btn-primary" onclick="location.reload()">확인</button>
          </div>
           
         </form>
@@ -285,16 +289,7 @@
 	  modal.find('.modal-body input').val(recipient)
 	})
 	
-	$('#modifiedProjectModal').on('show.bs.modal', function (event) {
-	  var button = $(event.relatedTarget) // Button that triggered the modal
-	  var recipient = button.data('whatever') // Extract info from data-* attributes
-	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-title').text('New message to ' + recipient)
-	  modal.find('.modal-body input').val(recipient)
-	})
-	
+
 	$('#createMileStoneModal').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
 	  var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -305,14 +300,39 @@
 	  modal.find('.modal-body input').val(recipient)
 	})
 	
-	$('#viewProjectModal').on('show.bs.modal', function (event) {
+	$('#modifiedProjectModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget) // Button that triggered the modal
+	  var viewItem = button.data('whatever') // Extract info from data-* attributes
+	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	  var modal = $(this)
+	  modal.find('.modal-title').text('프로젝트 : ' + viewItem)
+	  modal.find('.modal-body #projectName').val(viewItem)
+	  modal.find('.modal-body #projectStartTime').val(viewItem)
+	  modal.find('.modal-body #projectEndTime').val(viewItem)
+	  modal.find('.modal-body #projectMember').val(viewItem)
+	  modal.find('.modal-body #projectManager').val(viewItem)
+	  modal.find('.modal-body #teamName').val(viewItem)
+	  modal.find('.modal-body #centerName').val(viewItem)
+	  modal.find('.modal-body #projectContent').val(viewItem)
+	})
+	
+	$('#viewProjectModal').on('shown.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
 	  var recipient = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-title').text('New message to ' + recipient)
-	  modal.find('.modal-body input').val(recipient)
+	  var modal = $(this);
+	  modal.find('.modal-title').text('프로젝트 : ' + viewItem);
+	  modal.find('.modal-body #projectName').val(viewItem);
+	  modal.find('.modal-body #projectStartTime').val(viewItem);
+	  modal.find('.modal-body #projectEndTime').val(viewItem);
+	  modal.find('.modal-body #projectMember').val(viewItem);
+	  modal.find('.modal-body #projectManager').val(viewItem);
+	  modal.find('.modal-body #teamName').val(viewItem);
+	  modal.find('.modal-body #centerName').val(viewItem);
+	  modal.find('.modal-body #projectContent').val(viewItem);
+
 	})
 	
 </script>
