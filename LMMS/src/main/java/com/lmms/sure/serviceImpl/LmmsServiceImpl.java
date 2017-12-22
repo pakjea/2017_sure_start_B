@@ -1,7 +1,6 @@
 package com.lmms.sure.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONException;
@@ -9,7 +8,6 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
 import com.lmms.sure.dao.LmmsDao;
 import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
@@ -28,20 +26,24 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 	
 	@Override
-	public List<JSONObject> getProjectJSON() throws JSONException {
+	public List<String> getProjectJSON() throws JSONException {
 		// TODO Auto-generated method stub
 		List<Project> project = new ArrayList<>();
-		List<JSONObject> jsonProject = new ArrayList<>();
+		List<String> jsonProject = new ArrayList<>();
 		
-		Gson gson = new Gson();
 		project = lmmsDao.selectProject();
 		String json;
-		Iterator it = project.iterator();
-		while(it.hasNext()) {
-			json = gson.toJson(it.next());
-			jsonProject.add(new JSONObject(json));
+		for(Project pro : project) {
+			json = "{id:" + pro.getId() + 
+					", content: '"+ pro.getContent() +
+					"', start: '" + pro.getStartTime() +
+					"', end: '" + pro.getEndTime() +
+					"', group: '" + pro.getTeamName() +
+					"', title: '" + pro.getReason() +
+					"'}";
+			jsonProject.add(json);
+			json ="";
 		}
-		
 		return jsonProject;
 	}
 

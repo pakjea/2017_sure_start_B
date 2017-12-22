@@ -13,7 +13,7 @@ public interface LmmsService {
 
 	List<Project> getProject();
 	
-	List<JSONObject> getProjectJSON() throws JSONException;
+	List<String> getProjectJSON() throws JSONException;
 	
 	List<MileStone> getMileStone();
 	

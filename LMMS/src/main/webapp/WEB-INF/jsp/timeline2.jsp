@@ -42,7 +42,7 @@ var groups = new vis.DataSet([
 ]);
 
 // 각 그룹에 표시할 데이타 생성 및 연결
-var items = new vis.DataSet(${a});
+var items = new vis.DataSet(${allProjectJson});
 
 // 타임라인 옵션
 var options = {
