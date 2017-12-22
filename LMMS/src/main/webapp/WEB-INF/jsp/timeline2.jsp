@@ -42,24 +42,7 @@ var groups = new vis.DataSet([
 ]);
 
 // 각 그룹에 표시할 데이타 생성 및 연결
-var items = new vis.DataSet([
-  {id: 1, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "cssdf", title:'아아앙'},
-  {id: 2, content: 'start', start: '2017-03-01', end: '2017-03-30', group: "engine", title:'start: 2017-03-01  end: 2017-03-30'},
-  {id: 3, content: 'second', start: '2017-03-15', end: '2017-03-28', group: "engine", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 4, content: 'start', start: '2017-08-15', end: '2017-10-28', group: "ep", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 5, content: 'second', start: '2017-11-15', end: '2017-12-28', group: "ep", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 6, content: 'third', start: '2017-01-15', end: '2017-02-28', group: "ep", title:'start: 2017-03-15  end: 2017-03-28'},
-  
-  {id: 7, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "carsolsdf", title:'아아앙'},
-  {id: 8, content: 'start', start: '2017-03-15', end: '2017-05-28', group: "controller", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 9, content: 'start', start: '2017-03-15', end: '2017-05-28', group: "infor", title:'start: 2017-03-15  end: 2017-03-28'},
-  
-  {id: 10, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "qssdf", title:'아아앙'},
-  {id: 11, content: 'start', start: '2017-05-01',end: '2017-05-28', group: "corver", title:'인원변동'},
-  {id: 12, content: 'start', start: '2017-03-27', group: "stats", title:'인원변동', type : 'point'},
-  
- 
-]);
+var items = new vis.DataSet(${a});
 
 // 타임라인 옵션
 var options = {
