@@ -60,8 +60,7 @@
 </div>
 			
 			
-			<div class="row">
-			<div class="col-6"></div>
+			<div class="row">sss
 			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal">프로젝트 생성</button>
 			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal">프로젝트 수정</button>
 			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal">마일스톤 생성</button>
