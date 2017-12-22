@@ -60,15 +60,15 @@ public class LmmsServiceImpl implements LmmsService{
 		
 		//{id: 16, content: '', start: '2017-11-15', group: "ep_mile", title:'start: 2017-03-15',style:"border-color: black; color: black; background-color:black;",type:""},
 		for(MileStone ms : mileStone) {
-			json = "{\"id\":" + ms.getId() + 
-					", \"content\": \""+ ms.getContent() +
-					"\", \"start\": \"" + ms.getRegisterDate() +
-					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()).getTeamName()+"_mile" +
-					"\", \"title\": \"" + ms.getReason() +
-					"\", \"style\":\"border-color: black; color: black; background-color:black;\"" +
-					"\"type\":\"\"}";
-			jsonMileStone.add(json);
-			json ="";
+//			json = "{\"id\":" + ms.getId() + 
+//					", \"content\": \""+ ms.getContent() +
+//					"\", \"start\": \"" + ms.getRegisterDate() +
+//					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()).getTeamName()+"_mile" +
+//					"\", \"title\": \"" + ms.getReason() +
+//					"\", \"style\":\"border-color: black; color: black; background-color:black;\"" +
+//					"\"type\":\"\"}";
+//			jsonMileStone.add(json);
+//			json ="";
 		}
 		return jsonMileStone;
 	}
