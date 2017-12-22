@@ -58,7 +58,6 @@ public class LmmsServiceImpl implements LmmsService{
 		mileStone = lmmsDao.selectMileStone();
 		String json;
 		
-		//{id: 16, content: '', start: '2017-11-15', group: "ep_mile", title:'start: 2017-03-15',style:"border-color: black; color: black; background-color:black;",type:""},
 		for(MileStone ms : mileStone) {
 			json = "{\"id\":" + ms.getId() + 
 					", \"content\": \""+ ms.getContent() +

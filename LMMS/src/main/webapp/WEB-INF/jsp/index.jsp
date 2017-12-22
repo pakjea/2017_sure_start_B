@@ -148,7 +148,7 @@
         <form action="/updateProject" method="post">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
-            <input type="text" class="form-control" id="projectName" name="name">
+            <input type="text" class="form-control" id="projectName" name="name" disabled>
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
             <input type="text" class="form-control" id="projectStartTime" name="startTime">
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
@@ -169,8 +169,8 @@
             
           </div>
           <div class="form-group">
-            <label for="projectContent" class="col-form-label" name="">프로젝트 내용</label>
-            <textarea class="form-control" id="projectContent"></textarea>
+            <label for="projectContent" class="col-form-label">프로젝트 내용</label>
+            <textarea class="form-control" id="projectContent" name="content"></textarea>
           </div>
           
           <div class="modal-footer">
@@ -243,10 +243,12 @@
         </button>
       </div>
       <div class="modal-body">
+      
+      		<label for="projectName" class="col-form-label">프로젝트 이름</label>
+            <input type="text" class="form-control" id="projectName" name="projectName" disabled>
         <form action="/insertMileStone" method="post">
           <div class="form-group">
-          	<label for="projectId" class="col-form-label">프로젝트 ID</label>
-            <input type="text" class="form-control" name="projectId">
+            <input type="hidden" class="form-control" id="projectId" name="projectId">
             <label for="mileStoneName" class="col-form-label">마일스톤 이름</label>
             <input type="text" class="form-control" name="name">
             <label for="mileStoneMember" class="col-form-label">프로젝트 인원</label>
@@ -272,12 +274,7 @@
     </div>
   </div>
 </div>
-				
-				
 
-			</div>
-		</div>
-	</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 
@@ -342,6 +339,8 @@
 	  $('#modifiedProjectModal').find('.modal-body #centerName').val(jsonItem.centerName);
 	  $('#modifiedProjectModal').find('.modal-body #projectContent').val(jsonItem.content);
 	  $('#modifiedProjectModal').find('.modal-body #projectId').val(jsonItem.id);
+	  $('#createMileStoneModal').find('.modal-body #projectName').val(jsonItem.name);
+	  $('#createMileStoneModal').find('.modal-body #projectId').val(jsonItem.name);
 	  
 	})
 	
@@ -349,3 +348,4 @@
 	
 	
 </script>
+</html>

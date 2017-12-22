@@ -60,6 +60,13 @@ public class LmmsController {
 			lmmsService.setMileStone(model);
 		}
 		
+		
+		System.out.println(model.getProjectId());
+		System.out.println(model.getContent());
+		System.out.println(model.getName());
+		System.out.println(model.getReason());
+		
+		
 		return "redirect:index";
 	}
 	
@@ -70,6 +77,10 @@ public class LmmsController {
 		
 		if(model.getName() != null)
 			lmmsService.setProject(model);
+		
+		System.out.println(model.getName());
+		System.out.println(model.getContent());
+		System.out.println(model.getReason());
 		
 		return "index";
 	}
@@ -90,6 +101,7 @@ public class LmmsController {
 		
 		if(model.getName() != null)
 			lmmsService.setMileStone(model);
+		
 		
 		return "index";
 	}
