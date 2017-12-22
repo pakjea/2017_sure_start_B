@@ -8,12 +8,16 @@ import org.json.JSONObject;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
+import net.minidev.json.JSONArray;
+
 
 public interface LmmsService {
 
 	List<Project> getProject();
 	
 	List<String> getProjectJSON() throws JSONException;
+	
+	JSONArray getProjectJSONArray();
 	
 	List<MileStone> getMileStone();
 	

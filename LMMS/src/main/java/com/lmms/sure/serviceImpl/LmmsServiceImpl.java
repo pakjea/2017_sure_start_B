@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +11,8 @@ import com.lmms.sure.dao.LmmsDao;
 import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
+
+import net.minidev.json.JSONArray;
 
 @Service
 public class LmmsServiceImpl implements LmmsService{
@@ -39,7 +40,7 @@ public class LmmsServiceImpl implements LmmsService{
 					"', start: '" + pro.getStartTime() +
 					"', end: '" + pro.getEndTime() +
 					"', group: '" + pro.getTeamName() +
-					"', title: '" + pro.getReason() +
+					"', title: '" + pro.getContent() + " : " + pro.getReason() +
 					"'}";
 			jsonProject.add(json);
 			json ="";
@@ -48,9 +49,27 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 
 	@Override
+	public JSONArray getProjectJSONArray() {
+		// TODO Auto-generated method stub
+		JSONArray jsonArray = new JSONArray();
+		List<Project> project = new ArrayList<>();
+		project = lmmsDao.selectProject();
+	
+		for(Project pro : project) {
+			jsonArray.add(pro);
+		}
+		
+		
+		
+		
+		return jsonArray;
+	}
+
+	
+	@Override
 	public List<MileStone> getMileStone() {
 		// TODO Auto-generated method stub
-		return null;
+		return lmmsDao.selectMileStone();
 	}
 
 	@Override
@@ -87,8 +106,4 @@ public class LmmsServiceImpl implements LmmsService{
 		return 0;
 	}
 
-	
-	
-	
-	
 }

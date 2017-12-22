@@ -63,7 +63,7 @@
 			<div class="row">
 			<div class="col-6"></div>
 
-			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="hello world">프로젝트 생성</button>
+			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="">프로젝트 생성</button>
 
 			</div>
 			
@@ -75,9 +75,14 @@
 					    <p>${item}</p></div>
 					    </li>
 				    </c:forEach>
+				    <c:forEach var="item" items="${allMileStone}" varStatus="status">
+					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}">
+					    <h2>${item}</h2>
+					    <p>${item}</p></div>
+					    </li>
+				    </c:forEach>
 				  
 				</ul>
-				
 
 
 <!-- 프로젝트 생성 버튼 구현 내용 -->
@@ -319,7 +324,7 @@
 	
 	$('#viewProjectModal').on('shown.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
-	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  var viewItem = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	  var modal = $(this);
@@ -336,4 +341,3 @@
 	})
 	
 </script>
-	
