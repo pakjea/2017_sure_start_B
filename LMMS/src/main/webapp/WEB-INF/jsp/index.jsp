@@ -29,6 +29,10 @@
 		<div class="row-fluid">
 			<div class="span9">
 			
+			<div id="timeline-tooltip" style="height: 500px;"></div>
+			
+			
+			
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -269,9 +273,10 @@
 </body>
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-$('#createProjectModal').on('show.bs.modal', function (event) {
+	$('#createProjectModal').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
 	  var recipient = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -281,7 +286,7 @@ $('#createProjectModal').on('show.bs.modal', function (event) {
 	  modal.find('.modal-body input').val(recipient)
 	})
 	
-$('#modifiedProjectModal').on('show.bs.modal', function (event) {
+	$('#modifiedProjectModal').on('show.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
 	  var recipient = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
@@ -311,16 +316,52 @@ $('#modifiedProjectModal').on('show.bs.modal', function (event) {
 	  modal.find('.modal-body input').val(recipient)
 	})
 	
-	$('#exampleModal').on('show.bs.modal', function (event) {
-	  var button = $(event.relatedTarget) // Button that triggered the modal
-	  var recipient = button.data('whatever') // Extract info from data-* attributes
-	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-title').text('New message to ' + recipient)
-	  modal.find('.modal-body input').val(recipient)
-	})
-	
 </script>
+	
+	
+<script type="text/javascript">
+	google.charts.load('current', {'packages':['timeline']});
+    google.charts.setOnLoadCallback(drawChart);
+  	function over(){
+		alert("mouse over");
+		
+	}
+	function out(){
+		alert("mouse out");
+	}
+	
+      function drawChart() {
+    	  var container = document.getElementById('timeline-tooltip');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
 
-</html>
+        dataTable.addColumn({ type: 'string', id: 'Project' });
+		dataTable.addColumn({ type: 'string', id: 'Name' });
+		dataTable.addColumn({ type: 'date', id: 'Start' });
+		dataTable.addColumn({ type: 'date', id: 'End' });
+		
+		var project = 'Project1';  
+		
+		//사용자 정의 툴팁 위한 col
+		dataTable.addcolumn({type:'string',role:'tooltip'});
+		
+	
+		dataTable.addRows([
+     	['MONTH' ,'1월', new Date(2016, 11, 01), new Date(2017, 00, 01), 'ㄴㅇㄹ'],
+     	]);
+		
+		
+		
+     	var options = {
+  		timeline: { groupByRowLabel: true, colorByRowLabel:false},
+     	colors:['#00BFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF'
+     		, '#00BFFF','#F08080','#FF0000']
+		};
+     	
+     	var chart 
+     	
+        chart.draw(dataTable, options);
+        
+     
+      }
+</script>

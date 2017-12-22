@@ -1,12 +1,9 @@
 package com.lmms.sure;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -91,7 +88,8 @@ public class LmmsController {
 		
 		return "index";
 	}
-	
+
+
 	@RequestMapping(value="/deleteMileStone")
 	public String deleteMilestone(HttpServletRequest request,
 			HttpServletResponse response, String mileStoneId) {
