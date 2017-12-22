@@ -2,56 +2,63 @@ package com.lmms.sure.vo;
 
 public class MileStone {
 	
-	private int mileStoneId;
-	private String mileStoneName;
-	private String mileStoneRegisterDate;
-	private String mileStoneMember;
-	private String mileStoneManager;
-	private String mileStoneReason;
-	private String mileStoneStatus;
+	private int id;
+	private String name;
+	private String registerDate;
+	private String content;
+	private String member;
+	private String manager;
+	private String reason;
+	private String status;
 	private int projectId;
 	
-	public int getMileStoneId() {
-		return mileStoneId;
+	public int getId() {
+		return id;
 	}
-	public void setMileStoneId(int mileStoneId) {
-		this.mileStoneId = mileStoneId;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public String getMileStoneName() {
-		return mileStoneName;
+	public String getName() {
+		return name;
 	}
-	public void setMileStoneName(String mileStoneName) {
-		this.mileStoneName = mileStoneName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getMileStoneRegisterDate() {
-		return mileStoneRegisterDate;
+	public String getRegisterDate() {
+		return registerDate;
 	}
-	public void setMileStoneRegisterDate(String mileStoneRegisterDate) {
-		this.mileStoneRegisterDate = mileStoneRegisterDate;
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
 	}
-	public String getMileStoneMember() {
-		return mileStoneMember;
+	public String getContent() {
+		return content;
 	}
-	public void setMileStoneMember(String mileStoneMember) {
-		this.mileStoneMember = mileStoneMember;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getMileStoneManager() {
-		return mileStoneManager;
+	public String getMember() {
+		return member;
 	}
-	public void setMileStoneManager(String mileStoneManager) {
-		this.mileStoneManager = mileStoneManager;
+	public void setMember(String member) {
+		this.member = member;
 	}
-	public String getMileStoneReason() {
-		return mileStoneReason;
+	public String getManager() {
+		return manager;
 	}
-	public void setMileStoneReason(String mileStoneReason) {
-		this.mileStoneReason = mileStoneReason;
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
-	public String getMileStoneStatus() {
-		return mileStoneStatus;
+	public String getReason() {
+		return reason;
 	}
-	public void setMileStoneStatus(String mileStoneStatus) {
-		this.mileStoneStatus = mileStoneStatus;
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public int getProjectId() {
 		return projectId;
