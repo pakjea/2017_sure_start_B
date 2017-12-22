@@ -118,7 +118,6 @@ public class LmmsController {
 		return "index";
 	}
 
-
 	@RequestMapping(value="/deleteMileStone")
 	public String deleteMilestone(HttpServletRequest request,
 			HttpServletResponse response, String mileStoneId) {
