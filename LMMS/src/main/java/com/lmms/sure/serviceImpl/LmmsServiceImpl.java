@@ -34,13 +34,13 @@ public class LmmsServiceImpl implements LmmsService{
 		project = lmmsDao.selectProject();
 		String json;
 		for(Project pro : project) {
-			json = "{id:" + pro.getId() + 
-					", content: '"+ pro.getContent() +
-					"', start: '" + pro.getStartTime() +
-					"', end: '" + pro.getEndTime() +
-					"', group: '" + pro.getTeamName() +
-					"', title: '" + pro.getReason() +
-					"'}";
+			json = "{\"id\":" + pro.getId() + 
+					", \"content\": \""+ pro.getContent() +
+					"\", \"start\": \"" + pro.getStartTime() +
+					"\", \"end\": \"" + pro.getEndTime() +
+					"\", \"group\": \"" + pro.getTeamName() +
+					"\", \"title\": \"" + pro.getReason() +
+					"\"}";
 			jsonProject.add(json);
 			json ="";
 		}

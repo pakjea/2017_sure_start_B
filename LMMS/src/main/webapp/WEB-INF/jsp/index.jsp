@@ -69,14 +69,17 @@
 			
 			
 				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
-					<c:forEach var="item" items="${allProjectJson}" varStatus="status">
-					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}">
-					    <h2>${item}</h2>
-					    <p>${item}</p></div>
+					<c:forEach var="item" items="${allProject}" varStatus="status">
+					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever='{"id":"${item.id}","name":"${item.name}","content":"${item.content}","startTime":"${item.startTime}","endTime":"${item.endTime}","member":"${item.member}","reason":"${item.reason}","manager":"${item.manager}","registerDate":"${item.registerDate}","status":"${item.status}","teamName":"${item.teamName}","centerName":"${item.centerName}"},'>
+					    <h2> ${item.centerName}  ${item.teamName} - ${item.name} : ${item.content} </h2>
+					    <p> 담당자: ${item.manager},  &emsp; 공수(MM) : ${item.member}</p>
+					    <p> ${item.startTime} ~ ${item.endTime} </p></div>
 					    </li>
 				    </c:forEach>
 				  
 				</ul>
+				
+				
 				
 
 
@@ -94,24 +97,24 @@
         <form action="/insertProject" method="post">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
-            <input type="text" class="form-control" id="projectName" name="name">
+            <input type="text" class="form-control" id="projectName" name="name" placeholder="프로젝트 이름을 입력하세요.">
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name= "startTime">
+            <input type="text" class="form-control" id="projectStartTime" name= "startTime" placeholder="YYYY-MM-DD">
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name ="endTime">
+            <input type="text" class="form-control" id="projectEndTime" name ="endTime" placeholder="YYYY-MM-DD">
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
-            <input type="text" class="form-control" id="projectMember" name ="member">
+            <input type="text" class="form-control" id="projectMember" name ="member" placeholder="공수(MM) 입력">
             <label for="projectManager" class="col-form-label">담당자</label>
-            <input type="text" class="form-control" id="projectManager" name ="manager">
+            <input type="text" class="form-control" id="projectManager" name ="manager" placeholder="담당자를 입력하세요.">
             <label for="teamName" class="col-form-label">팀 이름</label>
-            <input type="text" class="form-control" id="teamName" name="teamName">
+            <input type="text" class="form-control" id="teamName" name="teamName" placeholder="team이름을 입력하세요. 예)Cover ">
             <label for="centerName" class="col-form-label">센터(실) 이름</label>
-            <input type="text" class="form-control" id="centerName" name ="centerName">
+            <input type="text" class="form-control" id="centerName" name ="centerName" placeholder="센터(실) 이름을 입력하세요.">
             <input type="hidden" id="projectStatus" name="status" value="N">
           </div>
           <div class="form-group">
             <label for="projectContent" class="col-form-label">프로젝트 내용</label>
-            <textarea class="form-control" id="projectContent" name="content"></textarea>
+            <textarea class="form-control" id="projectContent" name="content" placeholder="프로젝트 내용을 입력하세요."></textarea>
           </div>
           
           <div class="modal-footer">
@@ -141,28 +144,28 @@
         <form action="/updateProject" method="post">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
-            <input type="text" class="form-control" id="projectName">
+            <input type="text" class="form-control" id="projectName" name="name">
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime">
+            <input type="text" class="form-control" id="projectStartTime" name="startTime">
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime">
+            <input type="text" class="form-control" id="projectEndTime" name="endTime">
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
-            <input type="text" class="form-control" id="projectMember">
+            <input type="text" class="form-control" id="projectMember" name="member">
             <label for="projectReason" class="col-form-label">변경 이유</label>
-            <input type="text" class="form-control" id="projectReason">
+            <input type="text" class="form-control" id="projectReason" name="reason">
             <label for="projectManager" class="col-form-label">담당자</label>
-            <input type="text" class="form-control" id="projectManager">
+            <input type="text" class="form-control" id="projectManager" name="manager">
             <label for="projectStatus" class="col-form-label">프로젝트 상태</label>
-            <input type="text" class="form-control" id="projectStatus">
+            <input type="text" class="form-control" id="projectStatus" name="status">
             <label for="teamName" class="col-form-label">팀 이름</label>
-            <input type="text" class="form-control" id="teamName">
+            <input type="text" class="form-control" id="teamName" name="teamName">
             <label for="centerName" class="col-form-label">센터(실) 이름</label>
-            <input type="text" class="form-control" id="centerName">
-            <input type="hidden" class="form-control" id="projectStatus" value="N">
+            <input type="text" class="form-control" id="centerName" name="centerName">
+            <input type="hidden" class="form-control" id="projectStatus" name="status" value="N">
             
           </div>
           <div class="form-group">
-            <label for="projectContent" class="col-form-label">프로젝트 내용</label>
+            <label for="projectContent" class="col-form-label" name="">프로젝트 내용</label>
             <textarea class="form-control" id="projectContent"></textarea>
           </div>
           
@@ -191,20 +194,21 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
-            <input type="text" class="form-control" id="projectName" name="name" value="${allProject[0].name}" disabled>
+            <input type="text" class="form-control" id="projectName" name="name" disabled>
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name= "startTime" value="${allProject[0].startTime}" disabled>
+            <input type="text" class="form-control" id="projectStartTime" name= "startTime" disabled>
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name ="endTime" value="${allProject[0].endTime}" disabled>
+            <input type="text" class="form-control" id="projectEndTime" name ="endTime" disabled>
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
-            <input type="text" class="form-control" id="projectMember" name ="member" value="${allProject[0].member}" disabled>
+            <input type="text" class="form-control" id="projectMember" name ="member" disabled>
             <label for="projectManager" class="col-form-label">담당자</label>
-            <input type="text" class="form-control" id="projectManager" name ="manager" value="${allProject[0].manager}" disabled>
+            <input type="text" class="form-control" id="projectManager" name ="manager" disabled>
             <label for="teamName" class="col-form-label">팀 이름</label>
-            <input type="text" class="form-control" id="teamName" name="teamName" value="${allProject[0].teamName}" disabled>
+            <input type="text" class="form-control" id="teamName" name="teamName" disabled>
             <label for="centerName" class="col-form-label">센터(실) 이름</label>
-            <input type="text" class="form-control" id="centerName" name ="centerName" value="${allProject[0].centerName}" disabled>
+            <input type="text" class="form-control" id="centerName" name ="centerName" disabled>
             <input type="hidden" id="projectStatus" name="status" value="N">
+            <input type="hidden" id="projectId" name="id">
           </div>
           <div class="form-group">
             <label for="projectContent" class="col-form-label">프로젝트 내용</label>
@@ -212,7 +216,7 @@
           </div>
           
           <div class="modal-footer">
-        <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-whatever="${allProject[0]}" data-dismiss="modal">프로젝트 수정</button>
+        <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-dismiss="modal">프로젝트 수정</button>
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-dismiss="modal">마일스톤 등록</button>
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
@@ -284,9 +288,7 @@
 	  var recipient = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-title').text('New message to ' + recipient)
-	  modal.find('.modal-body input').val(recipient)
+	  
 	})
 	
 
@@ -295,9 +297,6 @@
 	  var recipient = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-title').text('New message to ' + recipient)
-	  modal.find('.modal-body input').val(recipient)
 	})
 	
 	$('#modifiedProjectModal').on('show.bs.modal', function (event) {
@@ -305,35 +304,45 @@
 	  var viewItem = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-	  var modal = $(this)
-	  modal.find('.modal-title').text('프로젝트 : ' + viewItem)
-	  modal.find('.modal-body #projectName').val(viewItem)
-	  modal.find('.modal-body #projectStartTime').val(viewItem)
-	  modal.find('.modal-body #projectEndTime').val(viewItem)
-	  modal.find('.modal-body #projectMember').val(viewItem)
-	  modal.find('.modal-body #projectManager').val(viewItem)
-	  modal.find('.modal-body #teamName').val(viewItem)
-	  modal.find('.modal-body #centerName').val(viewItem)
-	  modal.find('.modal-body #projectContent').val(viewItem)
+	  
 	})
 	
 	$('#viewProjectModal').on('shown.bs.modal', function (event) {
 	  var button = $(event.relatedTarget) // Button that triggered the modal
-	  var recipient = button.data('whatever') // Extract info from data-* attributes
+	  var viewItem = button.data('whatever') // Extract info from data-* attributes
 	  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 	  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 	  var modal = $(this);
-	  modal.find('.modal-title').text('프로젝트 : ' + viewItem);
-	  modal.find('.modal-body #projectName').val(viewItem);
-	  modal.find('.modal-body #projectStartTime').val(viewItem);
-	  modal.find('.modal-body #projectEndTime').val(viewItem);
-	  modal.find('.modal-body #projectMember').val(viewItem);
-	  modal.find('.modal-body #projectManager').val(viewItem);
-	  modal.find('.modal-body #teamName').val(viewItem);
-	  modal.find('.modal-body #centerName').val(viewItem);
-	  modal.find('.modal-body #projectContent').val(viewItem);
-
+	  var json = viewItem.substr(0,viewItem.length-1);
+	  var jsonItem = JSON.parse(json);
+	  
+	  modal.find('.modal-title').text('프로젝트 : ' + jsonItem.name + jsonItem.id);
+	  modal.find('.modal-body #projectName').val(jsonItem.name);
+	  modal.find('.modal-body #projectStartTime').val(jsonItem.startTime);
+	  modal.find('.modal-body #projectEndTime').val(jsonItem.endTime);
+	  modal.find('.modal-body #projectMember').val(jsonItem.member);
+	  modal.find('.modal-body #projectManager').val(jsonItem.manager);
+	  modal.find('.modal-body #teamName').val(jsonItem.teamName);
+	  modal.find('.modal-body #centerName').val(jsonItem.centerName);
+	  modal.find('.modal-body #projectContent').val(jsonItem.content);
+	  modal.find('.modal-body #projectId').val(jsonItem.id);
+	  $('#modifiedProjectModal').find('.modal-title').text('프로젝트 : ' + jsonItem.name + jsonItem.id);
+	  $('#modifiedProjectModal').find('.modal-body #projectName').val(jsonItem.name);
+	  $('#modifiedProjectModal').find('.modal-body #projectStartTime').val(jsonItem.startTime);
+	  $('#modifiedProjectModal').find('.modal-body #projectEndTime').val(jsonItem.endTime);
+	  $('#modifiedProjectModal').find('.modal-body #projectMember').val(jsonItem.member);
+	  $('#modifiedProjectModal').find('.modal-body #projectReasonr').val(jsonItem.reason);
+	  $('#modifiedProjectModal').find('.modal-body #projectManager').val(jsonItem.manager);
+	  $('#modifiedProjectModal').find('.modal-body #projectStatus').val(jsonItem.status);
+	  $('#modifiedProjectModal').find('.modal-body #teamName').val(jsonItem.teamName);
+	  $('#modifiedProjectModal').find('.modal-body #centerName').val(jsonItem.centerName);
+	  $('#modifiedProjectModal').find('.modal-body #projectContent').val(jsonItem.content);
+	  $('#modifiedProjectModal').find('.modal-body #projectId').val(jsonItem.id);
+	  
 	})
+	
+	
+	
 	
 </script>
 	
