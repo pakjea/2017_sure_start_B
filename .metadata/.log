@@ -5310,3 +5310,59 @@ Caused by: java.io.FileNotFoundException: C:\Program Files\Git\mingw64\share\git
 
 !ENTRY org.eclipse.jface.text 2 0 2017-12-20 16:10:30.724
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2017-12-22 09:26:26.040
+!MESSAGE GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+!STACK 0
+org.springsource.ide.eclipse.gradle.core.classpathcontainer.FastOperationFailedException: GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getRootProject(GradleProject.java:973)
+	at org.springsource.ide.eclipse.gradle.core.preferences.AbstractGradleProjectPreferences.getRootProjectPreferences(AbstractGradleProjectPreferences.java:283)
+	at org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences.getEnableClasspathEntrySorting(GradleProjectPreferences.java:90)
+	at org.springsource.ide.eclipse.gradle.core.ClassPath.<init>(ClassPath.java:146)
+	at org.springsource.ide.eclipse.gradle.core.ClassPath.<init>(ClassPath.java:141)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.convertToGradleProject(GradleProject.java:710)
+	at org.springsource.ide.eclipse.gradle.ui.actions.ConvertToGradleProjectActionDelegate$1.doit(ConvertToGradleProjectActionDelegate.java:54)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2017-12-22 09:26:26.040
+!MESSAGE GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+!STACK 0
+org.springsource.ide.eclipse.gradle.core.classpathcontainer.FastOperationFailedException: GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getRootProject(GradleProject.java:973)
+	at org.springsource.ide.eclipse.gradle.core.preferences.AbstractGradleProjectPreferences.getRootProjectPreferences(AbstractGradleProjectPreferences.java:283)
+	at org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences.getEnableClassnameEntrySorting(GradleProjectPreferences.java:112)
+	at org.springsource.ide.eclipse.gradle.core.ClassPath.<init>(ClassPath.java:147)
+	at org.springsource.ide.eclipse.gradle.core.ClassPath.<init>(ClassPath.java:141)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.convertToGradleProject(GradleProject.java:710)
+	at org.springsource.ide.eclipse.gradle.ui.actions.ConvertToGradleProjectActionDelegate$1.doit(ConvertToGradleProjectActionDelegate.java:54)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2017-12-22 09:26:26.086
+!MESSAGE GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+!STACK 0
+org.springsource.ide.eclipse.gradle.core.classpathcontainer.FastOperationFailedException: GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getRootProject(GradleProject.java:973)
+	at org.springsource.ide.eclipse.gradle.core.preferences.AbstractGradleProjectPreferences.getRootProjectPreferences(AbstractGradleProjectPreferences.java:283)
+	at org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences.getEnableClasspathEntrySorting(GradleProjectPreferences.java:90)
+	at org.springsource.ide.eclipse.gradle.core.ClassPath.<init>(ClassPath.java:146)
+	at org.springsource.ide.eclipse.gradle.core.classpathcontainer.GradleClassPathContainer.addTo(GradleClassPathContainer.java:377)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.convertToGradleProject(GradleProject.java:716)
+	at org.springsource.ide.eclipse.gradle.ui.actions.ConvertToGradleProjectActionDelegate$1.doit(ConvertToGradleProjectActionDelegate.java:54)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2017-12-22 09:26:26.086
+!MESSAGE GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+!STACK 0
+org.springsource.ide.eclipse.gradle.core.classpathcontainer.FastOperationFailedException: GradleProject 'LMMS' does not have a persisted root project location or model that allows computing it
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.getRootProject(GradleProject.java:973)
+	at org.springsource.ide.eclipse.gradle.core.preferences.AbstractGradleProjectPreferences.getRootProjectPreferences(AbstractGradleProjectPreferences.java:283)
+	at org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences.getEnableClassnameEntrySorting(GradleProjectPreferences.java:112)
+	at org.springsource.ide.eclipse.gradle.core.ClassPath.<init>(ClassPath.java:147)
+	at org.springsource.ide.eclipse.gradle.core.classpathcontainer.GradleClassPathContainer.addTo(GradleClassPathContainer.java:377)
+	at org.springsource.ide.eclipse.gradle.core.GradleProject.convertToGradleProject(GradleProject.java:716)
+	at org.springsource.ide.eclipse.gradle.ui.actions.ConvertToGradleProjectActionDelegate$1.doit(ConvertToGradleProjectActionDelegate.java:54)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
