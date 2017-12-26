@@ -50,5 +50,8 @@ public interface LmmsDao {
 	@Delete("DELETE FROM lmms.MileStone WHERE Id = #{id}")
 	int deleteMileStone(int mileStoneId);
 	
+	@Delete("DELETE FROM lmms.MileStone WHERE projectId = #{id}")
+	int deleteAllMileStone(int projectId);
+	
 
 }

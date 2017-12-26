@@ -92,6 +92,7 @@ public class LmmsServiceImpl implements LmmsService{
 
 	@Override
 	public int removeProject(int projectId) {
+		lmmsDao.deleteAllMileStone(projectId);
 		return lmmsDao.deleteProject(projectId);
 	}
 
