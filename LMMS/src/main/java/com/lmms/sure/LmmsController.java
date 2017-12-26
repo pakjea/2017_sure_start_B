@@ -99,6 +99,8 @@ public class LmmsController {
 		logger.debug("deleteProject");
 		logger.info("deleteProject");
 		
+		System.out.print(projectId);
+		
 		lmmsService.removeProject(Integer.parseInt(projectId));
 		
 		return "index";
@@ -124,6 +126,7 @@ public class LmmsController {
 		
 		logger.debug("deleteMileStone");
 		logger.info("deleteMileStone");
+		
 		
 		lmmsService.removeProject(Integer.parseInt(mileStoneId));
 		

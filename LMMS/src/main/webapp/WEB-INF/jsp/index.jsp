@@ -57,9 +57,9 @@
 					    </li>
 				    </c:forEach>
 				    <c:forEach var="item" items="${allMileStone}" varStatus="status">
-					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}">
-					    <h2>${item}</h2>
-					    <p>${item}</p></div>
+					    <li id="li-"><div data-toggle="modal" data-target="#viewMileStoneModal" data-whatever="${item}">
+					    <h2>${item.name}</h2>
+					    <p>${item.name}</p></div>
 					    </li>
 				    </c:forEach>
 				  
@@ -78,7 +78,7 @@
       <div class="modal-body">
         <form action="/insertProject" method="post">
           <div class="form-group">
-            <label for="projectName" class="col-form-label">프로젝트 이름</label>
+            <label for="mileStoneName" class="col-form-label">프로젝트 이름</label>
             <input type="text" class="form-control" id="projectName" name="name" placeholder="프로젝트 이름을 입력하세요.">
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
             <input type="text" class="form-control" id="projectStartTime" name= "startTime" placeholder="YYYY-MM-DD">
@@ -200,7 +200,11 @@
           <div class="modal-footer">
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-dismiss="modal">프로젝트 수정</button>
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-dismiss="modal">마일스톤 등록</button>
-        <button class="col-2" type="button" class="btn btn-danger"><form action="/deleteProject"></form>프로젝트 삭제</button>
+       
+       	<form action="/deleteProject" method="post">
+       	<input type="hidden" name="projectId" id="deleteProjectId">
+       	<button type="submit" class="btn btn-danger" onclick="location.reload()">프로젝트 삭제</button>
+       	</form>
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
          </div>
@@ -257,6 +261,59 @@
   </div>
 </div>
 
+
+<!-- 마일스톤 뷰 구현 내용 -->
+<div class="modal fade" id="viewMileStoneModal" tabindex="-1" role="dialog" aria-labelledby="viewMileStoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewMileStoneModalLabel">프로젝트 내용</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="projectName" class="col-form-label">마일스톤 이름</label>
+            <input type="text" class="form-control" id="projectName" name="name" disabled>
+            <label for="projectStartTime" class="col-form-label">생성일</label>
+            <input type="text" class="form-control" id="projectStartTime" name= "startTime" disabled>
+            <label for="projectEndTime" class="col-form-label">종료 날짜</label>
+            <input type="text" class="form-control" id="projectEndTime" name ="endTime" disabled>
+            <label for="projectMember" class="col-form-label">프로젝트 인원</label>
+            <input type="text" class="form-control" id="projectMember" name ="member" disabled>
+            <label for="projectManager" class="col-form-label">담당자</label>
+            <input type="text" class="form-control" id="projectManager" name ="manager" disabled>
+            <label for="teamName" class="col-form-label">팀 이름</label>
+            <input type="text" class="form-control" id="teamName" name="teamName" disabled>
+            <label for="centerName" class="col-form-label">센터(실) 이름</label>
+            <input type="text" class="form-control" id="centerName" name ="centerName" disabled>
+            <input type="hidden" id="projectStatus" name="status" value="N">
+            <input type="hidden" id="projectId" name="id">
+          </div>
+          <div class="form-group">
+            <label for="projectContent" class="col-form-label">프로젝트 내용</label>
+            <textarea class="form-control" id="projectContent" name="content" disabled></textarea>
+          </div>
+          
+          <div class="modal-footer">
+        <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-dismiss="modal">프로젝트 수정</button>
+        <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-dismiss="modal">마일스톤 등록</button>
+       
+       	<form action="/deleteProject" method="post">
+       	<input type="hidden" name="projectId" id="deleteProjectId">
+       	<button type="submit" class="btn btn-danger" onclick="location.reload()">프로젝트 삭제</button>
+       	</form>
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+         </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 			</div>
 		</div>
 	</div>
@@ -302,6 +359,7 @@
 	  var json = viewItem.substr(0,viewItem.length-1);
 	  var jsonItem = JSON.parse(json);
 	  
+	  modal.find('.modal-body #deleteProjectId').val(jsonItem.id);
 	  modal.find('.modal-title').text('프로젝트 : ' + jsonItem.name + jsonItem.id);
 	  modal.find('.modal-body #projectName').val(jsonItem.name);
 	  modal.find('.modal-body #projectStartTime').val(jsonItem.startTime);
@@ -323,9 +381,10 @@
 	  $('#modifiedProjectModal').find('.modal-body #teamName').val(jsonItem.teamName);
 	  $('#modifiedProjectModal').find('.modal-body #centerName').val(jsonItem.centerName);
 	  $('#modifiedProjectModal').find('.modal-body #projectContent').val(jsonItem.content);
-	  $('#modifiedProjectModal').find('.modal-body #projectId').val(jsonItem.id);
+	  
 	  $('#createMileStoneModal').find('.modal-body #projectId').val(jsonItem.id);
 	  $('#createMileStoneModal').find('.modal-body #projectName').val(jsonItem.name);
+	  
 	  
 	})
 	
