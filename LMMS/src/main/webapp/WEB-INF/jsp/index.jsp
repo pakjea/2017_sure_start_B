@@ -29,158 +29,156 @@
 /* 긴 문자열은 보기 좋게 미리 선언 */
 html5aroundImg='<img src="http://html5around.com/wordpress/wp-content/uploads/2016/12/html5around_155px.png" width=155px height=auto>';
 html5aroundMsg='fucker';
-
 var group = (${allProjectJson});
-
 var projectnestGroup = new Array()
-
 var epnestGroup = new Array()
 var enginenestGroup = new Array()
-
 var qsnestGroup = new Array()
 var covernestGroup = new Array()
 var statsnestGroup = new Array()
-
 var carnestGroup = new Array()
 var controllernestGroup = new Array()
 var infornestGroup = new Array()
 var bigdatanestGroup = new Array()
-
+var str = new String();
 console.log(group)
 for(var i in group) {
 	//if(group[i].teamName != "" && !projectnestGroup.includes(group[i].teamName)) {
 		//projectnestGroup.push(group[i].teamName);
 	//}
-	switch(group[i].teamName) {
+	switch(group[i].group) {
+		case "engine":
+			
+			enginenestGroup.push(group[i].id)
+			
+			break;
 		case "ep":
-			epnestGroup.push(group[i].name)
-			break;
-		case "cs":
-			enginenestGroup.push(group[i])
-			break;
-		case "qs":
-			qsnestGroup.push(group[i].name)
+			
+			epnestGroup.push(group[i].id)
+			
 			break;
 		case "cover":
-			covernestGroup.push(group[i].name)
+			
+			covernestGroup.push(group[i].id)
+		
 			break;
 		case "stats":
-			statsnestGroup.push(group[i].name)
+			
+			statsnestGroup.push(group[i].id)
+		
 			break;
 		case "controller":
-			controllernestGroup.push(group[i].name)
+			
+			controllernestGroup.push(group[i].id)
+			
 			break;
 		case "infor":
-			infornestGroup.push(group[i].name)
+			
+			infornestGroup.push(group[i].id)
+			
 			break;
 		case "bigdata":
-			bigdatanestGroup.push(group[i].name)
+			
+			bigdatanestGroup.push(group[i].id)
+		
 			break;
-		case "engine":
-			enginenestGroup.push(group[i].name)
-			break;
+		
 		default:
 			break;
 	}
 }
-console.log(group)
+//console.log(group)
 //console.log(projectnestGroup)
-
 console.log(epnestGroup)
 console.log(enginenestGroup)
-console.log(qsnestGroup)
 console.log(covernestGroup)
 console.log(statsnestGroup)
 console.log(controllernestGroup)
 console.log(infornestGroup)
 console.log(bigdatanestGroup)
-
 //lbnestGroup=["cs","qs","engine","ep","engine_p1_mile","ep_p1_mile","engine_p2_mile","ep_p2_mile","cover","stats","cover_p1","stats_p1","cover_p1_mile","stats_p1_mile", 'engine_p1','engine_p2','ep_p1','ep_p2'];
-
+//console.log(lbnestGroup)
 /*
 csnestGroup=["engine","ep","engine_p1_mile","ep_p1_mile","engine_p2_mile","ep_p2_mile",'engine_p1','engine_p2','ep_p1','ep_p2'];
-
 enginenestGroup=['engine_p1','engine_p2','engine_p1_mile','engine_p2_mile'];
 epnestGroup=['ep_p1','ep_p2','ep_p1_mile','ep_p2_mile'];
-
 qsnestGroup=["cover","stats",'cover_p1','stats_p1',"cover_p1_mile","stats_p1_mile"];
 covernestGroup=['cover_p1',"cover_p1_mile",'cover_p2'];
 statsnestGroup=['stats_p1',"stats_p1_mile"];
-
 carnestGroup=["controller","infor","bigdata","controller_mile","infor_mile","bigdata_mile"];
 // timeline을 넣을 곳,
+*/
 var container = document.getElementById('visualization');
 // group 생성, 일부러 nested 그룹도 생성 	
-*/
 
 var temp = new String();
 var jsonArray = new Array()
 var groups = new vis.DataSet({});
 for(var i in group) {
 //temp +=  group[i].teamName;
-	switch(group[i].teamName) {
+	switch(group[i].group) {
+		case "engine":
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "engine팀" ,'+'\"nestedGroups\" : '+'[' + enginenestGroup +']'+', \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "engine팀" , \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			jsonArray.push(jsob)
+			console.log(JSON.parse(jsob));
+			groups.add(JSON.parse(jsob));
+			jsob =""
+		break;
 		case "ep":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "ep팀" ,'+'\"nestedGroups\" : \"' + epnestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "ep팀" ,'+'\"nestedGroups\" : '+'[' + epnestGroup + ']'+', \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":2}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "ep팀" ,\"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":2}';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			groups.add(JSON.parse(jsob));
 			jsob =""
 			break;
-
 		case "cover":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "cover팀" ,'+'\"nestedGroups\" : \"' + covernestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "cover팀" ,'+'\"nestedGroups\" :'+'[' + covernestGroup +']'+', \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":3}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "cover팀" , \"style\" : \"background-color:#F3F781;\", '+ ' \"value\":3}';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			groups.add(JSON.parse(jsob));
 			jsob =""
 			break;
 		case "stats":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "stats팀" ,'+'\"nestedGroups\" : \"' + statsnestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "stats팀" ,'+'\"nestedGroups\" : '+'[' + statsnestGroup +']'+', \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":4}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "stats팀" , \"style\" : \"background-color:#F3F781;\", '+ ' \"value\":4}';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			groups.add(JSON.parse(jsob));
 			jsob =""
 			break;
 		case "controller":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "controller팀" ,'+'\"nestedGroups\" : \"' + controllernestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "controller팀" ,'+'\"nestedGroups\" : '+'[' + controllernestGroup +']'+', \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":5}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "controller팀" , \"style\" : \"background-color:#81F781;\", '+ ' \"value\":5}';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			groups.add(JSON.parse(jsob));
 			jsob =""
 			break;
 		case "infor":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "infor팀" ,'+'\"nestedGroups\" : \"' + infornestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "infor팀" ,'+'\"nestedGroups\" : '+'['+ infornestGroup +']'+', \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":6}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "infor팀" , \"style\" : \"background-color:#81F781;\", '+ ' \"value\":6}';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			groups.add(JSON.parse(jsob));
 			jsob =""
 			break;
 		case "bigdata":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "bigdata팀" ,'+'\"nestedGroups\" : \"' + bigdatanestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			//var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "bigdata팀" ,'+'\"nestedGroups\" : \"' + bigdatanestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
+			var jsob = '{\"id\" :'+''+ group[i].id+'' + ', \"content\" : "bigdata팀"  , \"style\" : \"background-color:#81F781;\", '+ ' \"value\":1}';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			groups.add(JSON.parse(jsob));
 			jsob =""
 			break;
-		case "engine":
-			var jsob = '{\"id\" :'+'\"'+ group[i].teamName+'\"' + ', \"content\" : "engine팀" ,'+'\"nestedGroups\" : \"' + enginenestGroup +'\", \"style\" : \"background-color:#FBF2EF;\", '+ ' \"value\":1}';
-			jsonArray.push(jsob)
-			console.log(JSON.parse(jsob));
-			groups.add(JSON.parse(jsob));
-			jsob =""
-			break;
+
 		default:
 			break;
 	}
-
 }
-
 console.log(jsonArray);
-
-
-
-
-groups.add(jsonArray);
 console.log(groups);
 /*
  
@@ -228,11 +226,30 @@ var groups = new vis.DataSet([
 ]);
 groups.add([{id:'cover_p2',content:'sdfsdf',}]);
 */
+//items.add(items2);
 // 각 그룹에 표시할 데이타 생성 및 연결
+var jsonArray = new Array()
+var items = new vis.DataSet({});
+for(var i in group) {
+//temp +=  group[i].teamName;
+
+
+			var jsob = '{\"id\" :'+''+i+'' + ', \"content\" : \"'+group[i].content+'\" ,'+'\"group\" :  ' +''+ group[i].id+'' + ', \"start\" : \"'+group[i].start+'\", \"end\" : \"'+group[i].end+'\" }';
+			jsonArray.push(jsob)
+			console.log(JSON.parse(jsob));
+			items.add(JSON.parse(jsob));
+			jsob =""
+}
+console.log(jsonArray);
+console.log(groups);
+console.log(items);
+
+/*
 var items = new vis.DataSet([
  
   {id: 1, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "cssdf", title:'아아앙'},
-  {id: 2, content: 'start', start: '2017-03-01', end: '2017-03-30', group: "engine_p1", title:'start: 2017-03-01  end: 2017-03-30' ,style:'background-color:red;'},
+  {id: 2, content: 'start', start: '2017-03-01', end: '2017-03-30', group: "32", title:'start: 2017-03-01  end: 2017-03-30' ,style:'background-color:red;'},
+  
   {id: 3, content: 'second', start: '2017-03-15', end: '2017-08-28', group: "engine_p2", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
   {id: 4, content: 'start', start: '2017-08-15', end: '2017-10-28', group: "ep_p1", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
   {id: 5, content: 'second', start: '2017-11-15', end: '2017-12-28', group: "ep_p2", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
@@ -248,10 +265,10 @@ var items = new vis.DataSet([
   {id: 13, content: 'start', start: '2017-03-27', end:'2017-05-13',group: "stats_p1", title:'인원변동'},
   {id: 14, content: 'second', start: '2017-05-15', end: '2017-6-28', group: "stats_p1", title:'start: 2017-03-15  end: 2017-03-28'},
   {id: 15, content: 'third', start: '2017-09-15', end: '2017-12-28', group: "stats_p1", title:'start: 2017-03-15  end: 2017-03-28'},
- 
-]);
 
+]); */
 var items2 = [
+	/*
 	  {'id': 16, 'content': '', 'start': '2017-11-15', 'group': "ep_p1_mile", 'title':'ep_mile','style':"border-color: black; color: black; background-color:black;",'type':""},
 	  {'id': 17, 'content': '', 'start': '2017-1-15', 'group': "ep_p2_mile", 'title':'ep_mile','style':"border-color: black; color: black; background-color:black;"},
 	  {'id': 18, 'content': '', 'start': '2017-4-15', 'group': "infor_mile", 'title':'infor_mile','style':"border-color: black; color: black; background-color:black;"},
@@ -260,13 +277,12 @@ var items2 = [
 	  {'id': 21, 'content': '', 'start': '2017-5-15', 'group': "stats_p1_mile", 'title':'stats_mile','style':"border-color: black; color: black; background-color:black;"},
 	  {'id': 22, 'content': '', 'start': '2017-3-15', 'group': "engine_p1_mile", 'title':'engine_mile','style':"border-color: black; color: black; background-color:black;"},
 	  {'id': 23, 'content': '', 'start': '2017-5-15', 'group': "engine_p2_mile", 'title':'engine_mile','style':"border-color: black; color: black; background-color:black;"},
+	  */
 ];
-
 //item change log
 items.on('*', function (event, properties) {
     console.log(event, properties.items);
   });
-
 // 타임라인 옵션
 var options = {
 	  orientation:{
@@ -284,19 +300,16 @@ var options = {
 	
 	//아이템 edit
 	 //editable:true,
-	 zoomable:false,
+	 zoomable:true,
 	  verticalScroll: true,
-	  min:'2017-12-01',  /*타임라인 시작 지정*/
-	  max:'2018-12-31',  /*타임라인 끝 지정*/
+	  min:'2015-12-01',  /*타임라인 시작 지정*/
+	  max:'2019-12-31',  /*타임라인 끝 지정*/
 	  maxHeight: 1000    /*타임라인 높이 지정, 넘으면 세로 스크롤*/
 	  
 	
 };
-
-
 // 타임라인 생성/ 화면에 보임
 var timeline = new vis.Timeline(container, items,groups, options);
-
 container.onclick = function () {
 	var props = timeline.getEventProperties(event)
 	//console.log(props);
