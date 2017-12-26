@@ -127,8 +127,10 @@ public class LmmsController {
 		logger.debug("deleteMileStone");
 		logger.info("deleteMileStone");
 		
+		System.out.println(mileStoneId);
 		
-		lmmsService.removeProject(Integer.parseInt(mileStoneId));
+		
+		lmmsService.removeMileStone(Integer.parseInt(mileStoneId));
 		
 		return "index";
 	}
