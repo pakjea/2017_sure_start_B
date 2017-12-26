@@ -5,6 +5,7 @@ public class MileStone {
 	private int id;
 	private String name;
 	private String registerDate;
+	private String content;
 	private String member;
 	private String manager;
 	private String reason;
@@ -28,6 +29,12 @@ public class MileStone {
 	}
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public String getMember() {
 		return member;

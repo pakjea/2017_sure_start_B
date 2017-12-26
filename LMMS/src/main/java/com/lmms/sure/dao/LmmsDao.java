@@ -24,6 +24,9 @@ public interface LmmsDao {
 	@Select("SELECT * FROM lmms.MileStone")
 	List<MileStone> selectMileStone();
 	
+	@Select("SELECT teamName FROM lmms.Project WHERE id=#{id}")
+	String selectOneProject(int projectId);
+	
 	@Select("SELECT * FROME lmms.Team")
 	List<Team> selectTeam();
 	
@@ -33,17 +36,18 @@ public interface LmmsDao {
 			+ "#{manager}, NOW(), #{status}, #{teamName}, #{centerName})")
 	int insertProject(Project project);
 	
-	//기존값이 없으면 인서트 있으면 업데이트로 변경
-	@Insert("INSERT into lmms.MileStone(name, registerDate, member, manager, reason,"
-			+ "status, projectId) VALUES(#{name}, #{registerDate},"
-			+ "#{member}, #{manager}, #{reason},"
-			+ " #{status}, #{projectId})")
+	@Insert("INSERT into lmms.MileStone(name, registerDate, content, member, manager, reason, "
+			+ "status, projectId) VALUES(#{name}, NOW(), #{content}, "
+			+ "#{member}, #{manager}, #{reason}, "
+			+ "#{status}, #{projectId}) ON DUPLICATE KEY UPDATE "
+			+ "name = #{name}, registerDate = NOW(), content = #{content}, member = #{member}, "
+			+ "manager = #{manager}, reason = #{reason}, status = #{status}, projectId = #{projectId}")
 	int insertMileStone(MileStone mileStone);
 	
-	@Delete("DELETE FROM lmms.Project WHERE pId = #{id}")
+	@Delete("DELETE FROM lmms.Project WHERE Id = #{id}")
 	int deleteProject(int projectId);
 	
-	@Delete("DELETE FROM lmms.MileStone WHERE mId = #{id}")
+	@Delete("DELETE FROM lmms.MileStone WHERE Id = #{id}")
 	int deleteMileStone(int mileStoneId);
 	
 
