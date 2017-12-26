@@ -200,6 +200,7 @@
           <div class="modal-footer">
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-dismiss="modal">프로젝트 수정</button>
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-dismiss="modal">마일스톤 등록</button>
+        <button class="col-2" type="button" class="btn btn-danger"><form action="/deleteProject"></form>프로젝트 삭제</button>
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
          </div>
@@ -221,10 +222,15 @@
         </button>
       </div>
       <div class="modal-body">
+      
+      <label for="projectId" class="col-form-label">프로젝트 이름</label>
+      <input type="text" class="form-control" name="projectName" id="projectName" disabled>
+      
         <form action="/insertMileStone" method="post">
           <div class="form-group">
-          	<label for="projectId" class="col-form-label">프로젝트 ID</label>
-            <input type="text" class="form-control" name="projectId">
+          	
+            <input type="hidden" class="form-control" name="projectId" id="projectId">
+            
             <label for="mileStoneName" class="col-form-label">마일스톤 이름</label>
             <input type="text" class="form-control" name="name">
             <label for="mileStoneMember" class="col-form-label">프로젝트 인원</label>
@@ -318,6 +324,8 @@
 	  $('#modifiedProjectModal').find('.modal-body #centerName').val(jsonItem.centerName);
 	  $('#modifiedProjectModal').find('.modal-body #projectContent').val(jsonItem.content);
 	  $('#modifiedProjectModal').find('.modal-body #projectId').val(jsonItem.id);
+	  $('#createMileStoneModal').find('.modal-body #projectId').val(jsonItem.id);
+	  $('#createMileStoneModal').find('.modal-body #projectName').val(jsonItem.name);
 	  
 	})
 	
