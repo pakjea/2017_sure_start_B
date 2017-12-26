@@ -59,18 +59,17 @@ public class LmmsServiceImpl implements LmmsService{
 		String json;
 		
 		for(MileStone ms : mileStone) {
-			json = "{\"id\":" + ms.getId() + 
-					", \"content\": \""+ ms.getContent() +
+			json = "{\"id\": \"" + "m" + ms.getId() +
 					"\", \"start\": \"" + ms.getRegisterDate() +
-					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()) + "_mile" +
+					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()) + "_p1_mile" +
 					"\", \"title\": \"" + ms.getContent() + " : " + ms.getReason() +
-					"\", \"style\":\"border-color: black; color: black; background-color:black;\"" +
-					"\"type\":\"\"}";
+					"\", \"style\":\"border-color: black; color: black; background-color:black; " +
+					"\", \"type\":\"\"}";
 			mileStoneJson.add(json);
 			json ="";
 		}
 		return mileStoneJson;
-	}
+	}	
 
 	
 	@Override

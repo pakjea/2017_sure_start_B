@@ -39,6 +39,8 @@
 			<div class="span9">
 			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="">프로젝트 생성</button>
 			
+			<%-- ${allProjectJson} <br><br> ${allMileStoneJson} --%>
+			
 			<div id="visualization"></div>
 
 			<div class="row">
@@ -378,38 +380,9 @@ var groups = new vis.DataSet([
 ]);
 
 // 각 그룹에 표시할 데이타 생성 및 연결
-var items = new vis.DataSet([
- 
-  {id: 1, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "cssdf", title:'아아앙'},
-  {id: 2, content: 'start', start: '2017-03-01', end: '2017-03-30', group: "engine_p1", title:'start: 2017-03-01  end: 2017-03-30' ,style:'background-color:red;'},
-  {id: 3, content: 'second', start: '2017-03-15', end: '2017-08-28', group: "engine_p2", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
-  {id: 4, content: 'start', start: '2017-08-15', end: '2017-10-28', group: "ep_p1", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
-  {id: 5, content: 'second', start: '2017-11-15', end: '2017-12-28', group: "ep_p2", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
-  {id: 6, content: 'third', start: '2017-01-15', end: '2017-02-28', group: "ep_p2", title:'start: 2017-03-15  end: 2017-03-28',style:';'},
-  
-  {id: 8, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "carsolsdf", title:'아아앙'},
-  {id: 7, content: 'start', start: '2017-03-15', end: '2017-05-28', group: "controller", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 9, content: 'start', start: '2017-03-15', end: '2017-05-28', group: "infor", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 10, content: 'second', start: '2017-04-15', end: '2017-8-28', group: "infor", title:'start: 2017-03-15  end: 2017-03-28'},
-  
-  {id: 11, content: html5aroundMsg, editable: true, start: '2017-03-01', end:'2022-12-31', group: "qssdf", title:'아아앙'},
-  {id: 12, content: 'start', start: '2017-05-01',end: '2017-05-28', group: "cover_p1", title:'인원변동'},
-  {id: 13, content: 'start', start: '2017-03-27', end:'2017-05-13',group: "stats_p1", title:'인원변동'},
-  {id: 14, content: 'second', start: '2017-05-15', end: '2017-6-28', group: "stats_p1", title:'start: 2017-03-15  end: 2017-03-28'},
-  {id: 15, content: 'third', start: '2017-09-15', end: '2017-12-28', group: "stats_p1", title:'start: 2017-03-15  end: 2017-03-28'},
+var items = new vis.DataSet(${allProjectJson});
 
-]);
-
-var items2 = [
-	  {'id': 16, 'content': '', 'start': '2017-11-15', 'group': "ep_p1_mile", 'title':'ep_mile','style':"border-color: black; color: black; background-color:black;",'type':""},
-	  {'id': 17, 'content': '', 'start': '2017-1-15', 'group': "ep_p2_mile", 'title':'ep_mile','style':"border-color: black; color: black; background-color:black;"},
-	  {'id': 18, 'content': '', 'start': '2017-4-15', 'group': "infor_mile", 'title':'infor_mile','style':"border-color: black; color: black; background-color:black;"},
-	  {'id': 19, 'content': '', 'start': '2017-11-15', 'group': "stats_mile", 'title':'stats_mile','style':"border-color: black; color: black; background-color:black;"},
-	  {'id': 20, 'content': '', 'start': '2017-3-15', 'group': "ep_mile", 'title':'ep_mile','style':"border-color: black; color: black; background-color:black;"},
-	  {'id': 21, 'content': '', 'start': '2017-5-15', 'group': "stats_p1_mile", 'title':'stats_mile','style':"border-color: black; color: black; background-color:black;"},
-	  {'id': 22, 'content': '', 'start': '2017-3-15', 'group': "engine_p1_mile", 'title':'engine_mile','style':"border-color: black; color: black; background-color:black;"},
-	  {'id': 23, 'content': '', 'start': '2017-5-15', 'group': "engine_p2_mile", 'title':'engine_mile','style':"border-color: black; color: black; background-color:black;"},
-];
+var items2 = ${allMileStoneJson};
 
 //item change log
 items.on('*', function (event, properties) {
@@ -446,7 +419,7 @@ var options = {
 
 
 // 타임라인 생성/ 화면에 보임
-var timeline = new vis.Timeline(container, items,groups, options);
+var timeline = new vis.Timeline(container, items, groups, options);
 
 container.onclick = function () {
 	var props = timeline.getEventProperties(event)
