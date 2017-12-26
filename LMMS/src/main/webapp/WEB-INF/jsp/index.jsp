@@ -233,8 +233,7 @@ var items = new vis.DataSet({});
 for(var i in group) {
 //temp +=  group[i].teamName;
 
-
-			var jsob = '{\"id\" :'+''+i+'' + ', \"content\" : \"'+group[i].content+'\" ,'+'\"group\" :  ' +''+ group[i].id+'' + ', \"start\" : \"'+group[i].start+'\", \"end\" : \"'+group[i].end+'\" }';
+			var jsob = '{\"id\" :\"'+group[i].id+'\", \"content\" : \"'+group[i].content+'\" ,'+'\"group\" :  ' +''+ group[i].id+'' + ', \"start\" : \"'+group[i].start+'\", \"end\" : \"'+group[i].end+'\" }';
 			jsonArray.push(jsob)
 			console.log(JSON.parse(jsob));
 			items.add(JSON.parse(jsob));
