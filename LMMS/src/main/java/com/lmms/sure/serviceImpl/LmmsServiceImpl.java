@@ -62,7 +62,7 @@ public class LmmsServiceImpl implements LmmsService{
 		for(MileStone ms : mileStone) {
 			json = "{\"id\": \"" + "m" + ms.getId() +
 					"\", \"start\": \"" + ms.getRegisterDate() +
-					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()) +"팀"+
+					"\", \"group\": \"" + lmmsDao.selectProjectName(ms.getProjectId()) +
 					"\", \"title\": \"" + ms.getContent() + " : " + ms.getReason() +
 					"\", \"style\":\"border-color: black; color: black; background-color:black; " +
 					"\", \"type\":\"\"}";
