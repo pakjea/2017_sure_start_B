@@ -37,7 +37,8 @@ public class LmmsServiceImpl implements LmmsService{
 					", \"content\": \""+ pro.getName() +
 					"\", \"start\": \"" + pro.getStartTime() +
 					"\", \"end\": \"" + pro.getEndTime() +
-					"\", \"group\": \"" + pro.getTeamName() +
+					"\", \"group\": \"" + pro.getName() +
+					"\", \"name\": \"" + pro.getTeamName() +
 					"\", \"title\": \"" + pro.getContent() + " : " + pro.getReason() +
 					"\"}";
 
@@ -59,7 +60,7 @@ public class LmmsServiceImpl implements LmmsService{
 		for(MileStone ms : mileStone) {
 			json = "{\"id\": \"" + "m" + ms.getId() +
 					"\", \"start\": \"" + ms.getRegisterDate() +
-					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()) + "_p1_mile" +
+					"\", \"group\": \"" + lmmsDao.selectProjectName(ms.getProjectId()) +
 					"\", \"title\": \"" + ms.getContent() + " : " + ms.getReason() +
 					"\", \"style\":\"border-color: black; color: black; background-color:black; " +
 					"\", \"type\":\"\"}";
@@ -144,7 +145,6 @@ public class LmmsServiceImpl implements LmmsService{
 		// TODO Auto-generated method stub
 		List<MileStone> mileStone = new ArrayList<>();
 		List<String> mileStoneJson = new ArrayList<>();
-		Gson gson = new Gson();
 		
 		mileStone = lmmsDao.selectMileStone();
 		String json;

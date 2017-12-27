@@ -2,10 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -301,21 +299,23 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
          </div>
       </div>
+		</div>
     </div>
-  </div>
 </div>
 
-
-			</div>
 		</div>
 	</div>
-	<jsp:include page="../common/footer.jsp"></jsp:include>
+</div>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 
 
 </body>
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script src="http://visjs.org/dist/vis.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- 모달 스크립트 -->
 <script type="text/javascript">
 
 	$('#createProjectModal').on('show.bs.modal', function (event) {
@@ -376,7 +376,7 @@
 	  
 	  $('#createMileStoneModal').find('.modal-body #projectId').val(jsonItem.id);
 	  $('#createMileStoneModal').find('.modal-body #projectName').val(jsonItem.name);
-	  
+	  $('#createMileStoneModal').find('.modal-body #mileStoneReason').val("프로젝트 : "+jsonItem.name);
 	  
 	})
 	
@@ -395,107 +395,257 @@
     modal.find('.modal-body #projectId').val(jsonItem.id);
     modal.find('.modal-body #deleteMileStoneId').val(jsonItem.id);
   })
-	
+  
 </script>
+<!-- 그래프 데이터 직접 넣는 스크립트-->
 <script type="text/javascript">
-/* 긴 문자열은 보기 좋게 미리 선언 */
-html5aroundImg='<img src="http://html5around.com/wordpress/wp-content/uploads/2016/12/html5around_155px.png" width=155px height=auto>';
-html5aroundMsg='RMMS';
 
-lbnestGroup=["cs","qs","engine","ep","engine_p1_mile","ep_p1_mile","engine_p2_mile","ep_p2_mile","cover","stats","cover_p1","stats_p1","cover_p1_mile","stats_p1_mile", 'engine_p1','engine_p2','ep_p1','ep_p2'];
+  /* 긴 문자열은 보기 좋게 미리 선언 */
+  html5aroundImg = '<img src="http://html5around.com/wordpress/wp-content/uploads/2016/12/html5around_155px.png" width=155px height=auto>';
+  html5aroundMsg = 'RMMS';
 
-csnestGroup=["engine","ep","engine_p1_mile","ep_p1_mile","engine_p2_mile","ep_p2_mile",'engine_p1','engine_p2','ep_p1','ep_p2'];
-enginenestGroup=['engine_p1','engine_p2','engine_p1_mile','engine_p2_mile'];
-epnestGroup=['ep_p1','ep_p2','ep_p1_mile','ep_p2_mile'];
+  var group = (${allProjectJson});
 
-qsnestGroup=["cover","stats",'cover_p1','stats_p1',"cover_p1_mile","stats_p1_mile"];
-covernestGroup=['cover_p1',"cover_p1_mile"];
-statsnestGroup=['stats_p1',"stats_p1_mile"];
+  var projectnestGroup = new Array()
 
-carnestGroup=["controller","infor","bigdata","controller_mile","infor_mile","bigdata_mile"];
-// timeline을 넣을 곳,
-var container = document.getElementById('visualization');
-// group 생성, 일부러 nested 그룹도 생성 	
-var groups = new vis.DataSet([
-	
-	 // {id: "lab", content: '연구실', nestedGroups:lbnestGroup },
-	
-	 // {id: "cs", content: 'cs실', nestedGroups:csnestGroup ,style:'background-color:#FBF2EF;',value:1},
-	  
-	  {id: "ep", content: 'EP팀',nestedGroups:epnestGroup,style:'background-color:#FBF2EF;',value:1.1},
-	  {id: "ep_p1", content: 'ep_p1 ',style:'background-color:#FBF2EF;',value:1.2},
-	  {id: "ep_p1_mile", content: ' ',style:'background-color:#FBF2EF;',value:1.2},
-	  {id: "ep_p2", content: 'ep_p2 ',style:'background-color:#FBF2EF;',value:1.2},
-	  {id: "ep_p2_mile", content: ' ',style:'background-color:#FBF2EF;',value:1.2},
-	  
-	  {id: "engine", content: "엔진팀",nestedGroups:enginenestGroup,style:'background-color:#FBF2EF;',value:1.3},
-	  {id: "engine_p1", content: 'engine_p1 ',style:'background-color:#FBF2EF;',value:1.4},
-	  {id: "engine_p1_mile", content: ' ',style:'background-color:#FBF2EF;',value:1.4},
-	  {id: "engine_p2", content: 'engine_p2 ',style:'background-color:#FBF2EF;',value:1.4},
-	  {id: "engine_p2_mile", content: ' ',style:'background-color:#FBF2EF;',value:1.4},
-	  
-	  {id: "qs", content: 'qs실', nestedGroups:qsnestGroup ,style:'background-color:#F3F781;',value:2},
-	 
-	  {id: "cover", content: "cover팀",nestedGroups:covernestGroup, style:'background-color:#F3F781;',value:2.1},
-	  {id: "cover_p1", content: "cover_p1",style:'background-color:#F3F781;',value:2.2},
-	  {id: "cover_p1_mile", content: " ",style:'background-color:#F3F781;',value:2.2},
-	  
-	  {id: "stats", content: 'stats팀',nestedGroups:statsnestGroup,style:'background-color:#F3F781;',value:2.3},
-	  {id: "stats_p1", content: 'stats_p1 ',style:'background-color:#F3F781;',value:2.4},
-	  {id: "stats_p1_mile", content: ' ',style:'background-color:#F3F781;',value:2.4},
-	  
-	  {id: "carsol", content: '차량솔루션센터', nestedGroups:carnestGroup,style:'background-color:#81F781;',value:3 },
-	  {id: "controller", content: '제어기솔루션팀',style:'background-color:#81F781;',value:3.1},
-	  {id: "controller_mile", content: ' ',style:'background-color:#81F781;',value:3.2},
-	  {id: "infor", content: '인포에이먼트',style:'background-color:#81F781;',value:3.3},
-	  {id: "infor_mile", content: ' ',style:'background-color:#81F781;',value:3.4},
-	  {id: "bigdata", content: '빅데이터',style:'background-color:#81F781;',value:3.5},
-	  {id: "bigdata_mile", content: ' ',style:'background-color:#81F781;',value:3.6},
-	
-]);
+  var epnestGroup = new Array()
+  var enginenestGroup = new Array()
 
-// 각 그룹에 표시할 데이타 생성 및 연결
-var items = new vis.DataSet(${allProjectJson});
+  var qsnestGroup = new Array()
+  var covernestGroup = new Array()
+  var statsnestGroup = new Array()
 
-var items2 = ${allMileStoneJson};
-
-//item change log
-items.on('*', function (event, properties) {
+  var carnestGroup = new Array()
+  var controllernestGroup = new Array()
+  var infornestGroup = new Array()
+  var bigdatanestGroup = new Array()
+  
+  var temp = new String();
+  var jsonArray = new Array()
+  var array = new Array();
+  
+  /* 그룹별 프로젝트 배열 */
+  for (var i in group) {
+    if(group[i].group != "" && !projectnestGroup.includes(group[i].group)) {
+    		projectnestGroup.push(group[i].group);
+    }
+    switch (group[i].name) {
+      case "ep":
+    	  	if(!epnestGroup.includes(group[i].content)) {
+    	  		epnestGroup.push(group[i].content)
+    	  		//epnestGroup.push(group[i].content+"_mile")
+    	  		//console.log(epnestGroup)
+    	  		jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      case "qs":
+        if(!qsnestGroup.includes(group[i].content)) {
+        		qsnestGroup.push(group[i].content)
+        			jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      case "cover":
+        if(!covernestGroup.includes(group[i].content)) {
+        		covernestGroup.push(group[i].content)
+        			jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      case "stats":
+        if(!statsnestGroup.includes(group[i].content)) {
+        		statsnestGroup.push(group[i].content)
+        			jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      case "controller":
+        if(!controllernestGroup.includes(group[i].content)) {
+        		controllernestGroup.push(group[i].content)
+        		jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+        }
+        break;
+      case "infor":
+        if(!infornestGroup.includes(group[i].content)) {
+        		infornestGroup.push(group[i].content)
+        		jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      case "bigdata":
+        if(!bigdatanestGroup.includes(group[i].content)) {
+        		bigdatanestGroup.push(group[i].content)
+        		jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      case "engine":
+        if(!enginenestGroup.includes(group[i].content)) {
+        		enginenestGroup.push(group[i].content)
+        		jsonArray.push(JSON.parse('{\"id\" : \"'+ group[i].group + '\", \"content\" : \"' + group[i].content + '\"}'))
+    	  	}
+        break;
+      default:
+        break;
+    }
+  }
+  
+  /* json 오브젝트 배열 생성 */
+  for (var i in group) {
+	  if(!array.includes(group[i].group)) {
+		  array.push(group[i].group)
+		  switch (group[i].name) {
+		      case "ep":
+		    	  	var str = "[";
+		    	 	for(var i in epnestGroup) {
+		    	 		var strTmp = "\"" + epnestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"ep팀\"' + ', \"content\" : "ep팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        jsonArray.push(JSON.parse(jsob))
+		        jsob = ""
+		        break;
+		      case "cover":
+		    	  	var str = "[";
+		    	 	for(var i in covernestGroup) {
+		    	 		var strTmp = "\"" + covernestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"cover팀\"' + ', \"content\" : "cover팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        jsonArray.push(JSON.parse(jsob))
+		        jsob = ""
+		        break;
+		      case "stats":
+		    	  	var str = "[";
+		    	 	for(var i in statsnestGroup) {
+		    	 		var strTmp = "\"" + statsnestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"stats팀\"' + ', \"content\" : "stats팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        jsonArray.push(JSON.parse(jsob))
+		        jsob = ""
+		        break;
+		      case "controller":
+		    	  	var str = "[";
+		    	 	for(var i in controllernestGroup) {
+		    	 		var strTmp = "\"" + controllernestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"controller팀\"' + ', \"content\" : "controller팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        jsonArray.push(JSON.parse(jsob))
+		        jsob = ""
+		        break;
+		      case "infor":
+		    	  	var str = "[";
+		    	 	for(var i in infornestGroup) {
+		    	 		var strTmp = "\"" + infornestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"infor팀\"' + ', \"content\" : "infor팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        jsonArray.push(JSON.parse(jsob))
+		        jsob = ""
+		        break;
+		      case "bigdata":
+		    	  	var str = "[";
+		    	 	for(var i in bigdatanestGroup) {
+		    	 		var strTmp = "\"" + bigdatanestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"bigdata팀\"' + ', \"content\" : "bigdata팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        jsonArray.push(JSON.parse(jsob))
+		        jsob = ""
+		        break;
+		      case "engine":
+		    	  	var str = "[";
+		    	 	for(var i in enginenestGroup) {
+		    	 		var strTmp = "\"" + enginenestGroup[i] +"\"";
+		    	 		str += strTmp
+		    	 		str += ","
+		    	 		strTmo = "";
+		    	 	}
+		    	 	str = str.substring(0, str.length-1)
+		    	 	str += "]"
+		        var jsob = '{\"id\" :' + '\"engine팀\"' + ', \"content\" : "engine팀" ,' + '\"nestedGroups\" : ' + str + ', \"style\" : \"background-color:#FBF2EF;\", ' + ' \"value\":1}';
+		        var flag = true;
+		        for(var i in jsonArray) {
+		        		if(jsonArray[i].id === JSON.parse(jsob).id) {
+		        			console.log("@@@@");
+		        			flag = false;
+		        		}
+		        }
+		        if(flag){
+		        		jsonArray.push(JSON.parse(jsob))	
+		        }
+		        jsob = ""
+		        break;
+		      default:
+		        break;
+		    }  
+	  }
+  }
+  
+  console.log(jsonArray)
+  var container = document.getElementById('visualization');
+  var groups = new vis.DataSet(jsonArray);
+  
+  // 각 그룹에 표시할 데이타 생성 및 연결
+  var items = new vis.DataSet(${allProjectJson});
+  var items2 = ${allMileStoneJson};
+  items.add(items2)
+  console.log(jsonArray)
+  console.log(groups)
+  console.log(items)
+  console.log(items2)
+  //item change log
+  items.on('*', function (event, properties) {
     console.log(event, properties.items);
   });
 
-// 타임라인 옵션
-var options = {
-	  orientation:{
-		  axis:'top',
-		  item:'top',
-	
-	  },
-	  tooltip:{
-		  followMouse:true,
-	  },
-	  
-	  groupOrder: function(a,b){
-		  return a.value-b.value;
-	  },
-	
-	//아이템 edit
-	 // editable:true,
-	  
-	  
-	  zoomable:false,
-	  verticalScroll: true,
-	  min:'2017-01-01',  /*타임라인 시작 지정*/
-	  max:'2017-12-31',  /*타임라인 끝 지정*/
-	  maxHeight: 1000    /*타임라인 높이 지정, 넘으면 세로 스크롤*/
-	  
-	
-};
+  // 타임라인 옵션
+  var options = {
+    orientation: {
+      axis: 'top',
+      item: 'top',
 
+    },
+    tooltip: {
+      followMouse: true,
+    },
 
-// 타임라인 생성/ 화면에 보임
-var timeline = new vis.Timeline(container, items, groups, options);
+    groupOrder: function (a, b) {
+      return a.value - b.value;
+    },
 
+    //아이템 edit
+    //editable:true,
+    zoomable: false,
+    verticalScroll: true,
+    min: '2017-01-01', /*타임라인 시작 지정*/
+    max: '2018-12-31', /*타임라인 끝 지정*/
+    maxHeight: 1000    /*타임라인 높이 지정, 넘으면 세로 스크롤*/
+  }
+  
+  var timeline = new vis.Timeline(container, items, groups, options);
+  
 container.onclick = function () {
 	var props = timeline.getEventProperties(event)
 	//console.log(props);
@@ -517,16 +667,7 @@ container.onclick = function () {
 		});
 	
 }
-/*
-timeline.on('select', function (properties) {
-	  alert('selected items: ' + properties.items);
-	});
-	*/
-	items.add(items2);
-	timeline.fit();
-  
-  //var timeline2 = new vis.Timeline(container, items, options);
-</script>
 
+</script>
 
 </html>

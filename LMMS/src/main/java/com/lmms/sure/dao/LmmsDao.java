@@ -34,6 +34,10 @@ public interface LmmsDao {
 	@Select("SELECT NAME FROM lmms.Center")
 	List<String> selectCenter();
 	
+	@Select("SELECT name FROM lmms.Project WHERE id=#{id}")
+	String selectProjectName(int projectId);
+	
+	
 	@Insert("INSERT into lmms.Project(name, content, startTime, endTime, member, reason,"
 			+ "manager, registerDate, status, teamName, centerName) VALUES(#{name}, #{content},"
 			+ "#{startTime}, #{endTime}, #{member}, #{reason},"
@@ -57,5 +61,4 @@ public interface LmmsDao {
 	@Delete("DELETE FROM lmms.MileStone WHERE projectId = #{projectId}")
 	int deleteMileStoneInProject(int projectId);
 	
-
 }
