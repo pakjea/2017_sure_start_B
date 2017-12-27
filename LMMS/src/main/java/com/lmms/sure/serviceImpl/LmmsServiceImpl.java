@@ -1,19 +1,18 @@
 package com.lmms.sure.serviceImpl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
 import com.lmms.sure.dao.LmmsDao;
 import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
+
+import net.minidev.json.JSONArray;
 
 @Service
 public class LmmsServiceImpl implements LmmsService{
@@ -28,27 +27,56 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 	
 	@Override
-	public List<JSONObject> getProjectJSON() throws JSONException {
+	public List<String> getProjectJSON() throws JSONException {
 		// TODO Auto-generated method stub
 		List<Project> project = new ArrayList<>();
-		List<JSONObject> jsonProject = new ArrayList<>();
+		List<String> jsonProject = new ArrayList<>();
 		
-		Gson gson = new Gson();
 		project = lmmsDao.selectProject();
 		String json;
-		Iterator it = project.iterator();
-		while(it.hasNext()) {
-			json = gson.toJson(it.next());
-			jsonProject.add(new JSONObject(json));
+		for(Project pro : project) {
+			json = "{\"id\":" + pro.getId() + 
+					", \"content\": \""+ pro.getName() +
+					"\", \"start\": \"" + pro.getStartTime() +
+					"\", \"end\": \"" + pro.getEndTime() +
+					"\", \"group\": \"" + pro.getName() +
+					"\", \"name\": \"" + pro.getTeamName() +
+					"\", \"title\": \"" + pro.getContent() + " : " + pro.getReason() +
+					"\"}";
+
+			jsonProject.add(json);
+			json ="";
 		}
-		
 		return jsonProject;
 	}
 
 	@Override
+	public List<String> getMileStoneJSON() {
+		// TODO Auto-generated method stub
+		List<MileStone> mileStone = new ArrayList<>();
+		List<String> mileStoneJson = new ArrayList<>();
+	
+		mileStone = lmmsDao.selectMileStone();
+		String json;
+		
+		for(MileStone ms : mileStone) {
+			json = "{\"id\": \"" + "m" + ms.getId() +
+					"\", \"start\": \"" + ms.getRegisterDate() +
+					"\", \"group\": \"" + lmmsDao.selectOneProject(ms.getProjectId()) +"팀"+
+					"\", \"title\": \"" + ms.getContent() + " : " + ms.getReason() +
+					"\", \"style\":\"border-color: black; color: black; background-color:black; " +
+					"\", \"type\":\"\"}";
+			mileStoneJson.add(json);
+			json ="";
+		}
+		return mileStoneJson;
+	}	
+
+	
+	@Override
 	public List<MileStone> getMileStone() {
 		// TODO Auto-generated method stub
-		return null;
+		return lmmsDao.selectMileStone();
 	}
 
 	@Override
@@ -65,6 +93,7 @@ public class LmmsServiceImpl implements LmmsService{
 
 	@Override
 	public int removeProject(int projectId) {
+		lmmsDao.deleteAllMileStone(projectId);
 		return lmmsDao.deleteProject(projectId);
 	}
 
@@ -85,8 +114,10 @@ public class LmmsServiceImpl implements LmmsService{
 		return 0;
 	}
 
-	
-	
-	
-	
+	@Override
+	public JSONArray getProjectJSONArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

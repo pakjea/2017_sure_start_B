@@ -48,11 +48,10 @@ public class LmmsApplicationTests {
 				projectId = tmpProject.getId();
 			}
 		}
-		
 		lmmsService.removeProject(projectId);
 		
 		for(Project tmpProject : lmmsService.getProject()) {
-			if(tmpProject.getName().equals("Code Test")) {
+			if(!tmpProject.getName().equals("Code Test")) {
 				return true;
 			}
 		}
@@ -66,6 +65,7 @@ public class LmmsApplicationTests {
 		ms.setMember("5");
 		ms.setManager("최선호");
 		ms.setReason(null);
+		ms.setContent("1월 마일스톤입니다");
 		ms.setStatus("N");
 		ms.setProjectId(1);
 		
@@ -87,10 +87,10 @@ public class LmmsApplicationTests {
 			}
 		}
 		
-		lmmsService.removeProject(mileStoneId);
+		lmmsService.removeMileStone(mileStoneId);
 		
 		for(MileStone tmpMileStone : lmmsService.getMileStone()) {
-			if(tmpMileStone.getName().equals("1월 마일스톤")) {
+			if(!tmpMileStone.getName().equals("1월 마일스톤")) {
 				return true;
 			}
 		}

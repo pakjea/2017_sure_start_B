@@ -24,6 +24,9 @@ public interface LmmsDao {
 	@Select("SELECT * FROM lmms.MileStone")
 	List<MileStone> selectMileStone();
 	
+	@Select("SELECT teamName FROM lmms.Project WHERE id=#{id}")
+	String selectOneProject(int projectId);
+	
 	@Select("SELECT * FROME lmms.Team")
 	List<Team> selectTeam();
 	
@@ -46,6 +49,9 @@ public interface LmmsDao {
 	
 	@Delete("DELETE FROM lmms.MileStone WHERE Id = #{id}")
 	int deleteMileStone(int mileStoneId);
+	
+	@Delete("DELETE FROM lmms.MileStone WHERE projectId = #{id}")
+	int deleteAllMileStone(int projectId);
 	
 
 }
