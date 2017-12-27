@@ -21,6 +21,7 @@ import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
+
 @Controller
 public class LmmsController {
 	
@@ -160,7 +161,7 @@ public class LmmsController {
 				String valA = o1.split(",\"registerDate\":\"")[1].split("\",")[0];
 				String valB = o2.split(",\"registerDate\":\"")[1].split("\",")[0];
 
-	            return valA.compareTo(valB);
+	            return valB.compareTo(valA);
 			}
 			
 		});

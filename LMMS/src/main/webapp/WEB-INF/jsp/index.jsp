@@ -88,9 +88,9 @@
             <label for="mileStoneName" class="col-form-label">프로젝트 이름</label>
             <input type="text" class="form-control" id="projectName" name="name" placeholder="프로젝트 이름을 입력하세요.">
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name= "startTime" placeholder="YYYY-MM-DD">
+            <input type="date" class="form-control" id="projectStartTime" name= "startTime" placeholder="YYYY-MM-DD">
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name ="endTime" placeholder="YYYY-MM-DD">
+            <input type="date" class="form-control" id="projectEndTime" name ="endTime" placeholder="YYYY-MM-DD">
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
             <input type="text" class="form-control" id="projectMember" name ="member" placeholder="공수(MM) 입력">
             <label for="projectManager" class="col-form-label">담당자</label>
@@ -135,9 +135,9 @@
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
             <input type="text" class="form-control" id="projectName" name="name">
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name="startTime">
+            <input type="date" class="form-control" id="projectStartTime" name="startTime">
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name="endTime">
+            <input type="date" class="form-control" id="projectEndTime" name="endTime">
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
             <input type="text" class="form-control" id="projectMember" name="member">
             <label for="projectReason" class="col-form-label">변경 이유</label>
@@ -185,9 +185,9 @@
             <label for="projectName" class="col-form-label">프로젝트 이름</label>
             <input type="text" class="form-control" id="projectName" name="name" disabled>
             <label for="projectStartTime" class="col-form-label">시작 날짜</label>
-            <input type="text" class="form-control" id="projectStartTime" name= "startTime" disabled>
+            <input type="date" class="form-control" id="projectStartTime" name= "startTime" disabled>
             <label for="projectEndTime" class="col-form-label">종료 날짜</label>
-            <input type="text" class="form-control" id="projectEndTime" name ="endTime" disabled>
+            <input type="date" class="form-control" id="projectEndTime" name ="endTime" disabled>
             <label for="projectMember" class="col-form-label">프로젝트 인원</label>
             <input type="text" class="form-control" id="projectMember" name ="member" disabled>
             <label for="projectManager" class="col-form-label">담당자</label>
