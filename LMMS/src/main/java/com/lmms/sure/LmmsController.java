@@ -21,8 +21,6 @@ import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
 
-
-
 @Controller
 public class LmmsController {
 	
@@ -110,6 +108,8 @@ public class LmmsController {
 		
 		logger.debug("deleteProject");
 		logger.info("deleteProject");
+		
+		System.out.print(projectId);
 		
 		lmmsService.removeProject(Integer.parseInt(projectId));
 		
