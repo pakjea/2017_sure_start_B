@@ -35,6 +35,8 @@ public interface LmmsService {
 	int removeProject(int projectId);
 
 	int removeMileStone(int mileStoneId);
+	
+	int removeMileStoneInProject(int projectId);
 
 	int modifiedProject(Project model);
 

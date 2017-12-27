@@ -505,6 +505,7 @@ container.onclick = function () {
 		
 	}else if(props.item!=null&&props.group == "ep"){
 		alert("EP 팀 프로젝트입니다");
+		
 	}else if(props.item!=null&&props.group == "controller"){
 		alert("제어기솔루션 팀 프로젝트입니다");
 	}

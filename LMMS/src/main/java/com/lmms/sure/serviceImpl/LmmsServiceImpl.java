@@ -166,6 +166,12 @@ public class LmmsServiceImpl implements LmmsService{
 		return mileStoneJson;
 	}
 
+	@Override
+	public int removeMileStoneInProject(int projectId) {
+		// TODO Auto-generated method stub
+		return lmmsDao.deleteMileStoneInProject(projectId);
+	}
+
 	
 
 }

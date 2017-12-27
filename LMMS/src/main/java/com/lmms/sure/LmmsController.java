@@ -110,9 +110,10 @@ public class LmmsController {
 		logger.debug("deleteProject");
 		logger.info("deleteProject");
 		
-		System.out.print(projectId);
-		
-		lmmsService.removeProject(Integer.parseInt(projectId));
+		if(!projectId.equals(null)) {
+			lmmsService.removeProject(Integer.parseInt(projectId));
+			lmmsService.removeMileStoneInProject(Integer.parseInt(projectId));
+		}
 		
 		return "index";
 	}
@@ -137,9 +138,11 @@ public class LmmsController {
 		
 		logger.debug("deleteMileStone");
 		logger.info("deleteMileStone");
-		
-		//마일스톤을 구분할 수 있도록 id 앞에 붙여놓은 m 문자 제거
-		lmmsService.removeProject(Integer.parseInt(mileStoneId.substring(1)));
+
+		if(!mileStoneId.equals(null)) {
+			//마일스톤을 구분할 수 있도록 id 앞에 붙여놓은 m 문자 제거
+			lmmsService.removeMileStone(Integer.parseInt(mileStoneId.substring(1)));
+		}
 		
 		return "index";
 	}
