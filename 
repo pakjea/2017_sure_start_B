@@ -1,0 +1,425 @@
+[33mcommit 60f698ad624be055ba49a22f26393dff3cfbe035[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 27 15:55:01 2017 +0900
+
+    MASTER 프로젝트 삭제하면 해당 프로젝트에 포함되는 마일스톤 모두 삭제
+
+[33mcommit 1be9063ad6e19338c0e240420f69236578f19813[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 27 14:17:38 2017 +0900
+
+    MASTER 날짜입력 부분 text형식에서 date형식으로 바꿔서 캘린더로 입력 받기로 변경
+
+[33mcommit b1545dbc945e60e25707797db3201ae5bd81ea55[m
+Merge: ae72f2d 28a3acf
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 27 13:39:09 2017 +0900
+
+    MASTER 그래프 합치기전 정리
+
+[33mcommit ae72f2d7d15f28107092c941bb94de4fa6a721d4[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 27 11:56:52 2017 +0900
+
+    MASTER 모든 프로젝트와 마일스톤을 등록한 순서대로 정렬 및 식별하기 쉽게 아이콘 추가
+
+[33mcommit 28a3acf2d69a53cdd60fbd9b1deee25232e4cf78[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Tue Dec 26 16:04:07 2017 +0900
+
+    hotfix . 마일스톤 상세내용 구현중 커밋.
+
+[33mcommit e21389482295df589098f0a019ce8d8947ee006f[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Tue Dec 26 15:09:47 2017 +0900
+
+    master : hotfix  milestone 생성시 projectId hidden으로 던지고, projectName은 disabled로 수정
+
+[33mcommit d4c475b8f40165be52aad3e1dd7288f58d902326[m
+Author: kang <kkt629@gmail.com>
+Date:   Tue Dec 26 14:23:29 2017 +0900
+
+    그래프에 들어가는 데이터 서버에서 받은데이터로 교체
+
+[33mcommit a60ce8a14d268b308129f959039202e416a70a17[m
+Merge: 61732a2 6cc04a2
+Author: kang <kkt629@gmail.com>
+Date:   Tue Dec 26 13:37:11 2017 +0900
+
+    최신버전 업데이트
+
+[33mcommit 6cc04a2f6109e809f820ab292a5896c205488281[m[33m ([m[1;31morigin/LMMS61[m[33m, [m[1;32mLMMS61[m[33m)[m
+Merge: f18f0c9 7cc168b
+Author: kang <kkt629@gmail.com>
+Date:   Tue Dec 26 12:10:26 2017 +0900
+
+    LMMS61 그래프 합치고 자잘한 버그 수정 및 UI 변경, 프로젝트 최신화
+
+[33mcommit 7cc168b9ef017db7df086f69cf5367a1ca7f7ab6[m
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Sun Dec 24 19:11:33 2017 +0900
+
+    Update index.jsp
+
+[33mcommit 8bf104835ba465cc3d72861b39e46970c858d4f3[m
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Sun Dec 24 19:09:28 2017 +0900
+
+    Update index.jsp
+
+[33mcommit 0292430c980b2c2092903a3ad1501653da0a665a[m
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Sun Dec 24 19:03:03 2017 +0900
+
+    Add files via upload
+    
+    그래프수정
+
+[33mcommit f18f0c9cb03dc0c9076e3138f82f44d8f7d5a84c[m
+Merge: 5cc9575 8664571
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 18:02:13 2017 +0900
+
+    LMMS61 프로젝트 등록 수정 및 그래프와 연동
+
+[33mcommit 5cc9575c58ae63f3cde8a7b28bc29e78098582b1[m
+Merge: 3bb4b25 7d3b4a6
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 17:53:04 2017 +0900
+
+    LMMS61 통합
+
+[33mcommit 3bb4b25cdfc0df99e42e28b709288bccdebf2cf7[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 17:49:42 2017 +0900
+
+    LMMS61 에러수정
+
+[33mcommit 7d3b4a69d3de262acd79b529d1f2158ad8de23c2[m[33m ([m[1;31morigin/LMMS2[m[33m)[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Fri Dec 22 17:46:41 2017 +0900
+
+    LMMS2: 마일스톤 id hidden 전송 및 disabled, milestone post 전
+
+[33mcommit 86645713219532e424c467a95e63dd84b9444b96[m
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Fri Dec 22 17:36:45 2017 +0900
+
+    lmms15 수정
+
+[33mcommit 3ce6a392fd02b96ee32d327d5a3536115ef941ef[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 17:32:31 2017 +0900
+
+    LMMS61 로그추가 및 마일스톤 정보 JSON으로 넘겨주는부분에서 오류난 부분 해결
+
+[33mcommit d3b3b176825c26e83ebf053b81393620a4ff4dff[m
+Merge: ee32851 6045598
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Fri Dec 22 16:38:48 2017 +0900
+
+    LMMS15 수정
+
+[33mcommit f3f8e6b584a814dcd69ce4978634e92b69eb001c[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 16:38:10 2017 +0900
+
+    에러나는 부분 주석처리
+
+[33mcommit 9f63e8858363c9b62e58c83db8ab83dee0555039[m[33m ([m[1;31morigin/LMMS52[m[33m)[m
+Merge: 4969bcd 09dabe5
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Fri Dec 22 16:24:32 2017 +0900
+
+    Merge commit '09dabe5aa59b0f8f63b5213f17c0a86f3c8c202d' into LMMS52
+    
+    # Conflicts:
+    #       LMMS/bin/com/lmms/sure/LmmsApplicationTests.class
+    #       LMMS/bin/com/lmms/sure/LmmsController.class
+    #       LMMS/src/main/java/com/lmms/sure/service/LmmsService.java
+    #       LMMS/src/main/java/com/lmms/sure/serviceImpl/LmmsServiceImpl.java
+    #       LMMS/src/main/webapp/WEB-INF/jsp/index.jsp
+
+[33mcommit 4969bcd467ff0df62ea069c707b0119b8e12f26c[m
+Merge: b65dbf7 8328dd9
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Fri Dec 22 16:18:28 2017 +0900
+
+    Merge commit '8328dd9475b1fa1c1be2910dc829044904fd107b' into LMMS52
+    
+    # Conflicts:
+    #       LMMS/src/main/webapp/WEB-INF/jsp/index.jsp
+
+[33mcommit b65dbf71ea64f8fb601155227f443b570de209dd[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Fri Dec 22 16:14:53 2017 +0900
+
+    LMMS52: 프로젝트 생성 placeholder, 프로젝트 선택 시 프로젝트 수정, 마일스톤 생성
+    
+    1. 프로젝트 생성 시 placeholder로 입력 양식 출력하도록 함.
+    2. 프로젝트 상세내용에서 수정버튼을 누르면 다른 모달이 출력되어, 현재 내용을 포함하고, controller로 값을 post형태로 던져줌.
+    3. 프로젝트 리스트가 제대로 출력됨.
+
+[33mcommit 8328dd9475b1fa1c1be2910dc829044904fd107b[m[33m ([m[1;31morigin/LMMS60[m[33m)[m
+Author: choiseonho <csh8724@gmail.com>
+Date:   Fri Dec 22 16:00:38 2017 +0900
+
+    LMMS60 마일스톤 테스트 코드 수정 및 마일스톤 정보 가져오는 기능 구현
+
+[33mcommit 09dabe5aa59b0f8f63b5213f17c0a86f3c8c202d[m[33m ([m[1;31morigin/LMMS59[m[33m, [m[1;32mLMMS59[m[33m)[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 16:00:03 2017 +0900
+
+    LMMS59 통합전 커밋
+
+[33mcommit a672fcb5b888e9d08674af7d3140729c4e60af7f[m[33m ([m[1;31morigin/LMMS56[m[33m)[m
+Merge: bd2ad68 11b91ca
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Fri Dec 22 11:28:27 2017 +0900
+
+    Merge branch 'LMMS52' into LMMS56
+    
+    # Conflicts:
+    #       LMMS/src/main/webapp/WEB-INF/jsp/index.jsp
+
+[33mcommit bd2ad6834ed9db26243a24b08a4a76dbac97f576[m
+Author: choiseonho <csh8724@gmail.com>
+Date:   Fri Dec 22 11:19:47 2017 +0900
+
+    LMMS56 JSONObject JSP에 전송
+
+[33mcommit 11b91cabeccd84d9e5291e0ea11f6bd718c38132[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Fri Dec 22 11:18:03 2017 +0900
+
+    LMMS52: 프로젝트 클릭했을때, 마일스톤 생성, 프로젝트 수정을 포함하도록 변경, 프로젝트 상세내용에서 수정을 누르면 이전 modal을 hide하고 프로젝트 수정 modal이 show 되도록 변경함.
+
+[33mcommit 4487e25bd2a66575eb4487bcebcf8af7c800ef76[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 10:21:35 2017 +0900
+
+    LMMS58 그래프와 서버 데이터 연결
+
+[33mcommit 61732a20a306890f0db8b6693831074c3c7899d9[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 10:00:28 2017 +0900
+
+    a
+
+[33mcommit 870f0617148910024c8124b9ecfe104bb4f2a846[m[33m ([m[1;31morigin/lMMS57[m[33m)[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 09:47:54 2017 +0900
+
+    LMMS57 그래프 통합
+
+[33mcommit 8a07fa08f9bf1d0cec90ad6edecc29b0c4bc0286[m
+Merge: 6045598 ee32851
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 09:41:36 2017 +0900
+
+    LMMS57 그래프합치기
+
+[33mcommit a65cb2922260212e5a0894b46a90a24974bc7fd1[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 09:31:02 2017 +0900
+
+    a
+
+[33mcommit c55dbc912fc7c5e921dbb4713f0cc6e05825b5a0[m
+Author: kang <kkt629@gmail.com>
+Date:   Fri Dec 22 09:24:02 2017 +0900
+
+    gitignore 정리
+
+[33mcommit 6045598006188e422b82ab1130836ac7abdccee2[m[33m ([m[1;31morigin/LMMS49[m[33m)[m
+Merge: 32d6636 af23f04
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 17:59:24 2017 +0900
+
+    LMMS49 프로젝트 정보 JSONObject 리스트로 jsp에 전송
+
+[33mcommit ee32851669a5a0465c615e5a70523e926c311a72[m
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Thu Dec 21 17:37:34 2017 +0900
+
+    LMMS15 visjs로 수정
+
+[33mcommit 32d6636557eae824ff57cb5080812612e5a481bd[m
+Merge: 2c055c6 d168451
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 17:19:20 2017 +0900
+
+    LMMS49 프로젝트 통합
+
+[33mcommit af23f0419c8cda3d6d4aab7dc8cae26bc22b8c41[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Thu Dec 21 17:18:07 2017 +0900
+
+    LMMS52: modal에 데이터 넘기는 작업 진행
+
+[33mcommit d168451dbc56215ffb641598c9c98cff4ef17be5[m[33m ([m[1;31morigin/LMMS55[m[33m)[m
+Author: choiseonho <csh8724@gmail.com>
+Date:   Thu Dec 21 17:17:31 2017 +0900
+
+    LMMS55 테스트 코드 구현
+
+[33mcommit 2c055c6ba6308da453bf8662d7fc1bad93af5de4[m
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 17:17:28 2017 +0900
+
+    LMMS49 프로젝트 정보 JsonObject 리스트로 jsp에 전송
+
+[33mcommit b161d1a51703863a6939c8a585db87e9b9e1c19a[m
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 15:22:51 2017 +0900
+
+    LMMS49 통합
+
+[33mcommit 7642461826ff3598c168055df06d0f3bd9c365a6[m
+Merge: c6dd3bd d85b11c
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 14:27:55 2017 +0900
+
+    LMMS49 그래프 통합
+
+[33mcommit c6dd3bdc0be8110fc4796a9ef2b7411bd590a336[m
+Merge: 215b0c2 d244c57
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 14:13:41 2017 +0900
+
+    LMMS49 업데이트, 삭제 기능 통합
+
+[33mcommit d244c5711a8f40c2e6a9f450d08a5db6266964e0[m[33m ([m[1;31morigin/LMMS43[m[33m)[m
+Author: choiseonho <csh8724@gmail.com>
+Date:   Thu Dec 21 14:06:43 2017 +0900
+
+    LMMS43 프로젝트 삭제,수정 및 마일스톤 삭제, 수정 코드 구현
+
+[33mcommit 215b0c267c43d9ea02a72ed42bda7d9fb2291704[m
+Merge: 3ce4bad 8bf44ed
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 14:05:59 2017 +0900
+
+    LMMS49 통합
+
+[33mcommit 3ce4bada16163466af34e6aa0b58b894eb832825[m
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 14:01:00 2017 +0900
+
+    LMMS49 통합
+
+[33mcommit 8bf44ed2dfa6c6562dfc58d4ea1402d6ef2e8081[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Thu Dec 21 14:00:19 2017 +0900
+
+    LMMS52: 프로젝트 클릭시 상세화면 뷰 작업 중 커
+
+[33mcommit e6aa0ba19aac4c7e592e00fa4682ba47ffd81710[m
+Merge: 473ddfa 7a8faaa
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 11:15:49 2017 +0900
+
+    jsp쪽 마일스톤 등록 부분과 merge
+
+[33mcommit 473ddfaea4e10e55e234db4cc4a07358b250022b[m
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 11:14:02 2017 +0900
+
+    update
+
+[33mcommit 7a8faaafdab2de5522900969ec1f3e2448b27227[m[33m ([m[1;31morigin/LMMS11[m[33m)[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Thu Dec 21 11:11:12 2017 +0900
+
+    마일스톤 생성 버튼 및 입력 modal 구현, post방식으로 데이터 전송
+
+[33mcommit 3136189165564cd2e9aaeeb39278f7cf245d739b[m
+Author: kang <kkt629@gmail.com>
+Date:   Thu Dec 21 10:52:40 2017 +0900
+
+    서버에서 받은 데이터 리스트형태로 출력
+
+[33mcommit b675fb8ce619de66ed273c4b6d571e0304fcb016[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 20 16:54:53 2017 +0900
+
+    오타 수정
+
+[33mcommit d85b11cdd473acb344625290f43a299974baf310[m
+Author: leesubae <34637627+leesubae@users.noreply.github.com>
+Date:   Wed Dec 20 16:39:06 2017 +0900
+
+    sample chart 구현
+
+[33mcommit 531cdb6d56f132eb658b089df6501035309699d5[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 20 16:32:09 2017 +0900
+
+    변수명 변경
+
+[33mcommit d220606f96f7e9463965d7d799c00327009061c1[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 20 15:39:37 2017 +0900
+
+    gitignore 수정
+
+[33mcommit a5a2ade70b092226205c77880248f9bf7c991528[m
+Merge: 8ff316a 706065e
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 20 15:37:10 2017 +0900
+
+    프로젝트 등록 기능 merge
+
+[33mcommit 8ff316a963530ebee231bb024db8f1a7a839718b[m[33m ([m[1;31morigin/LMMS40[m[33m)[m
+Author: Oksu Park <pos91011@gmail.com>
+Date:   Wed Dec 20 15:15:11 2017 +0900
+
+    index.jsp에서 프로젝트 등록버튼 및 등록정보 POST방식으로 서버로 전송기능 구현
+
+[33mcommit 489da4ae402797682ee3232140157fe2cf87aed7[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 20 11:16:52 2017 +0900
+
+    gitignore modified
+
+[33mcommit 706065e2972426e28a1dfe5ce337b2b0e25e4349[m[33m ([m[1;31morigin/LMMS45[m[33m, [m[1;31morigin/LMMS44[m[33m)[m
+Author: kang <kkt629@gmail.com>
+Date:   Wed Dec 20 11:05:56 2017 +0900
+
+    jsp에서 받아온 프로젝트 데이터 DB에 저장
+
+[33mcommit 0fa02877045f0ba31b5a35b0e05325c2659848d3[m
+Author: kang <kkt629@gmail.com>
+Date:   Tue Dec 19 18:06:00 2017 +0900
+
+    skeleton code modified
+
+[33mcommit 5061f1ac2567745a77d02753ababa244d69e5acf[m
+Author: kang <kkt629@gmail.com>
+Date:   Tue Dec 19 10:36:09 2017 +0900
+
+    add skeleton code
+
+[33mcommit 696b1ebed4420834e9e360464fa137a99132e79c[m
+Author: choiseonho <csh8724@gmail.com>
+Date:   Mon Dec 18 16:12:15 2017 +0900
+
+    update README.md
+
+[33mcommit 9df98e316a460e24af26d74821315eb4b9b3329d[m
+Author: pakjea <pakjea@suresofttech.com>
+Date:   Mon Dec 18 14:10:03 2017 +0900
+
+    remove tt.tt
+
+[33mcommit 201f2bc838569d676697fb975d62c693ecc3f7f1[m
+Author: pakjea <pakjea@suresofttech.com>
+Date:   Mon Dec 18 14:04:16 2017 +0900
+
+    add tt.tt
+
+[33mcommit cff951d6f8d10d1fc36b9c496865832f07022725[m
+Author: pakjea <pakjea@suresofttech.com>
+Date:   Mon Dec 18 14:01:38 2017 +0900
+
+    first commit

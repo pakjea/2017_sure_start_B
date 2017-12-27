@@ -172,6 +172,12 @@ public class LmmsServiceImpl implements LmmsService{
 		return lmmsDao.deleteMileStoneInProject(projectId);
 	}
 
+	@Override
+	public Project getOneProject(int id) {
+		// TODO Auto-generated method stub
+		return lmmsDao.selectOneProject(id);
+	}
+
 	
 
 }

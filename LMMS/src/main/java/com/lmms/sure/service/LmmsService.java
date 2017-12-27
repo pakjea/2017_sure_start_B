@@ -12,6 +12,8 @@ import net.minidev.json.JSONArray;
 
 public interface LmmsService {
 
+	Project getOneProject(int id);
+	
 	List<Project> getProject();
 
 	List<String> getProjectJSON();

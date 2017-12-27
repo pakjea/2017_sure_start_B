@@ -1,5 +1,6 @@
 package com.lmms.sure;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,9 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
@@ -180,4 +184,30 @@ public class LmmsController {
 		}
 		return temp;
 	}
+	
+	@RequestMapping(value="/index.do")
+	public void getInfo(HttpServletRequest request,
+			HttpServletResponse response, Model m,
+			String id) throws JsonProcessingException, ParseException {
+		
+		logger.debug("getInfo");
+		logger.info("getInfo");
+		System.out.println(id);
+
+		Project pro = lmmsService.getOneProject(Integer.parseInt(id));
+		JSONParser parser = new JSONParser();
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonTemp = mapper.writeValueAsString(pro);
+		JSONObject result = (JSONObject) parser.parse(jsonTemp);
+		m.addAttribute("result", result);
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().write(result.toJSONString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

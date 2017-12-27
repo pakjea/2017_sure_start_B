@@ -499,16 +499,22 @@ var timeline = new vis.Timeline(container, items, groups, options);
 container.onclick = function () {
 	var props = timeline.getEventProperties(event)
 	//console.log(props);
-	
-	if(props.item!=null&&props.group == "engine"){
-		alert("엔진팀 팀프로젝트 입니다")
-		
-	}else if(props.item!=null&&props.group == "ep"){
-		alert("EP 팀 프로젝트입니다");
-		
-	}else if(props.item!=null&&props.group == "controller"){
-		alert("제어기솔루션 팀 프로젝트입니다");
-	}
+	console.log(props.item)
+	$.ajax({
+		   type: "post",
+		   url: "/index.do",
+		   dataType: 'json',
+		   data : {
+			   id : props.item
+		   },
+		   success: function(result) {
+		      console.log(result)
+		      
+		   },
+		   error: function(error) {
+		      console.log(error);
+		   }
+		});
 	
 }
 /*
