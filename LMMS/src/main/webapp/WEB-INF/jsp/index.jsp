@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
 <!DOCTYPE html>
@@ -22,6 +23,8 @@
 <link href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" rel="stylesheet">  
 <script src="http://visjs.org/dist/vis.js"></script>
 <link href="http://visjs.org/dist/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
 <style>
   .vis-item {
@@ -38,9 +41,7 @@
 		<div class="row-fluid">
 			<div class="span9">
 			<button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createProjectModal" data-whatever="">프로젝트 생성</button>
-			
-			<%-- ${allProjectJson} <br><br> ${allMileStoneJson} --%>
-			
+
 			<div id="visualization"></div>
 
 			<div class="row">
@@ -49,18 +50,24 @@
 			</div>
 			
 				<ul data-role="listview" data-split-icon="gear" data-split-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search title">
-					<c:forEach var="item" items="${allProject}" varStatus="status">
-					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever='{"id":"${item.id}","name":"${item.name}","content":"${item.content}","startTime":"${item.startTime}","endTime":"${item.endTime}","member":"${item.member}","reason":"${item.reason}","manager":"${item.manager}","registerDate":"${item.registerDate}","status":"${item.status}","teamName":"${item.teamName}","centerName":"${item.centerName}"},'>
-					    <h2> ${item.centerName}  ${item.teamName} - ${item.name} : ${item.content} </h2>
+					<c:forEach var="item" items="${all}" varStatus="status">
+				    	<c:if test="${!fn:contains(item.id, 'm')}">
+				    	<li id="li-"><img src="../../static/images/Project.bmp">
+				    	<div data-toggle="modal" data-target="#viewProjectModal" data-whatever='{"id":"${item.id}","name":"${item.name}","content":"${item.content}","startTime":"${item.startTime}","endTime":"${item.endTime}","member":"${item.member}","reason":"${item.reason}","manager":"${item.manager}","registerDate":"${item.registerDate}","status":"${item.status}","teamName":"${item.teamName}","centerName":"${item.centerName}"},'>
+					  	<h2> ${item.centerName}  ${item.teamName} - ${item.name} : ${item.content} </h2>
 					    <p> 담당자: ${item.manager},  &emsp; 공수(MM) : ${item.member}</p>
-					    <p> ${item.startTime} ~ ${item.endTime} </p></div>
+					    <p> ${item.startTime} ~ ${item.endTime} </p>
+					    </div>
 					    </li>
-				    </c:forEach>
-				    <c:forEach var="item" items="${allMileStone}" varStatus="status">
-					    <li id="li-"><div data-toggle="modal" data-target="#viewProjectModal" data-whatever="${item}">
-					    <h2>${item}</h2>
-					    <p>${item}</p></div>
+					    </c:if>
+					    <c:if test="${fn:contains(item.id, 'm')}">
+				    	<li id="li-"><img src="../../static/images/MileStone.bmp">
+				    	<div data-toggle="modal" data-target="#viewMileStoneModal" data-whatever='{"id":"${item.id}","name":"${item.name}","registerDate":"${item.registerDate}","content":"${item.content}","member":"${item.member}","manager":"${item.manager}"},'>
+					    <h2> ${item.name} : ${item.content}</h2>
+					    <p>담당자: ${item.manager}, &emsp; 공수(MM) : ${item.member}</p>
+					    <p>생성일 : ${item.registerDate}</p></div>
 					    </li>
+					    </c:if>
 				    </c:forEach>
 				  
 				</ul>
@@ -197,9 +204,14 @@
             <textarea class="form-control" id="projectContent" name="content" disabled></textarea>
           </div>
           
-          <div class="modal-footer">
+        <div class="modal-footer">
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifiedProjectModal" data-dismiss="modal">프로젝트 수정</button>
         <button class="col-2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#createMileStoneModal" data-dismiss="modal">마일스톤 등록</button>
+        
+       	<form action="/deleteProject" method="post">
+       	<input type="hidden" name="projectId" id="deleteProjectId">
+       	<button type="submit" class="btn btn-danger" onclick="location.reload()">프로젝트 삭제</button>
+       	</form>
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
          </div>
@@ -250,6 +262,46 @@
     </div>
   </div>
 </div>
+
+
+<!-- 마일스톤 뷰 구현 내용 -->
+<div class="modal fade" id="viewMileStoneModal" tabindex="-1" role="dialog" aria-labelledby="viewMileStoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewMileStoneModalLabel">마일스톤 상세내용</h5>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="mileStoneName" class="col-form-label">마일스톤 이름</label>
+            <input type="text" class="form-control" id="mileStoneName" name="name" disabled>
+            <label for="mileStoneRegisterDate" class="col-form-label">생성일</label>
+            <input type="text" class="form-control" id="mileStoneRegisterDate" name= "registerDate" disabled>
+            <label for="mileStoneContent" class="col-form-label">마일스톤 내용</label>
+            <input type="text" class="form-control" id="mileStoneContent" name ="content" disabled>
+            <label for="mileStoneMember" class="col-form-label">프로젝트 인원</label>
+            <input type="text" class="form-control" id="mileStoneMember" name ="member" disabled>
+            <label for="mileStoneManager" class="col-form-label">담당자</label>
+            <input type="text" class="form-control" id="mileStoneManager" name ="manager" disabled>
+            <input type="hidden" id="projectId" name="id">
+          </div>
+          
+        <div class="modal-footer">
+       
+       	<form action="/deleteMileStone" method="post">
+       	<input type="hidden" name="mileStoneId" id="deleteMileStoneId">
+       	<button type="submit" class="btn btn-danger" onclick="location.reload()">마일스톤 삭제</button>
+       	</form>
+        
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+         </div>
+      </div>
+      
+       </div>
+  </div>
+</div>
+
+
 
 			</div>
 		</div>
@@ -321,12 +373,28 @@
 	  
 	})
 	
+	$('#viewMileStoneModal').on('shown.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var viewItem = button.data('whatever') // Extract info from data-* attributes
+    var modal = $(this);
+    var json = viewItem.substr(0, viewItem.length - 1);
+    var jsonItem = JSON.parse(json);
+
+    modal.find('.modal-body #mileStoneName').val(jsonItem.name);
+    modal.find('.modal-body #mileStoneRegisterDate').val(jsonItem.registerDate);
+    modal.find('.modal-body #mileStoneContent').val(jsonItem.content);
+    modal.find('.modal-body #mileStoneMember').val(jsonItem.member);
+    modal.find('.modal-body #mileStoneManager').val(jsonItem.manager);
+    modal.find('.modal-body #projectId').val(jsonItem.id);
+    modal.find('.modal-body #deleteMileStoneId').val(jsonItem.id);
+  })
 	
 </script>
 <script type="text/javascript">
 /* 긴 문자열은 보기 좋게 미리 선언 */
 html5aroundImg='<img src="http://html5around.com/wordpress/wp-content/uploads/2016/12/html5around_155px.png" width=155px height=auto>';
 html5aroundMsg='RMMS';
+
 lbnestGroup=["cs","qs","engine","ep","engine_p1_mile","ep_p1_mile","engine_p2_mile","ep_p2_mile","cover","stats","cover_p1","stats_p1","cover_p1_mile","stats_p1_mile", 'engine_p1','engine_p2','ep_p1','ep_p2'];
 
 csnestGroup=["engine","ep","engine_p1_mile","ep_p1_mile","engine_p2_mile","ep_p2_mile",'engine_p1','engine_p2','ep_p1','ep_p2'];
@@ -343,9 +411,9 @@ var container = document.getElementById('visualization');
 // group 생성, 일부러 nested 그룹도 생성 	
 var groups = new vis.DataSet([
 	
-	  {id: "lab", content: '연구실', nestedGroups:lbnestGroup },
+	 // {id: "lab", content: '연구실', nestedGroups:lbnestGroup },
 	
-	  {id: "cs", content: 'cs실', nestedGroups:csnestGroup ,style:'background-color:#FBF2EF;',value:1},
+	 // {id: "cs", content: 'cs실', nestedGroups:csnestGroup ,style:'background-color:#FBF2EF;',value:1},
 	  
 	  {id: "ep", content: 'EP팀',nestedGroups:epnestGroup,style:'background-color:#FBF2EF;',value:1.1},
 	  {id: "ep_p1", content: 'ep_p1 ',style:'background-color:#FBF2EF;',value:1.2},
@@ -410,7 +478,7 @@ var options = {
 	  
 	  zoomable:false,
 	  verticalScroll: true,
-	  min:'2016-12-01',  /*타임라인 시작 지정*/
+	  min:'2017-01-01',  /*타임라인 시작 지정*/
 	  max:'2017-12-31',  /*타임라인 끝 지정*/
 	  maxHeight: 1000    /*타임라인 높이 지정, 넘으면 세로 스크롤*/
 	  
@@ -445,5 +513,6 @@ timeline.on('select', function (properties) {
   
   //var timeline2 = new vis.Timeline(container, items, options);
 </script>
+
 
 </html>

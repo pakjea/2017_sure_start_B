@@ -18,17 +18,21 @@ import com.lmms.sure.vo.Team;
 @Mapper
 public interface LmmsDao {
 	
-	@Select("SELECT * FROM lmms.Project")
+	
+	@Select("SELECT * FROM lmms.Project ORDER BY id DESC")
 	List<Project> selectProject();
 	
-	@Select("SELECT * FROM lmms.MileStone")
+	@Select("SELECT * FROM lmms.MileStone ORDER BY id DESC")
 	List<MileStone> selectMileStone();
 	
 	@Select("SELECT teamName FROM lmms.Project WHERE id=#{id}")
 	String selectOneProject(int projectId);
 	
-	@Select("SELECT * FROME lmms.Team")
-	List<Team> selectTeam();
+	@Select("SELECT NAME FROM lmms.Team")
+	List<String> selectTeam();
+	
+	@Select("SELECT NAME FROM lmms.Center")
+	List<String> selectCenter();
 	
 	@Insert("INSERT into lmms.Project(name, content, startTime, endTime, member, reason,"
 			+ "manager, registerDate, status, teamName, centerName) VALUES(#{name}, #{content},"

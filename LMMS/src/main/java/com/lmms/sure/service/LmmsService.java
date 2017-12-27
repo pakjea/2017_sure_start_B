@@ -3,6 +3,7 @@ package com.lmms.sure.service;
 import java.util.List;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
@@ -13,13 +14,19 @@ public interface LmmsService {
 
 	List<Project> getProject();
 
-	List<String> getProjectJSON() throws JSONException;
+	List<String> getProjectJSON();
 
 	List<String> getMileStoneJSON();
+	
+	List<String> getProjectJSONForServer();
 
-	JSONArray getProjectJSONArray();
+	List<String> getMileStoneJSONForServer();
 
 	List<MileStone> getMileStone();
+	
+	List<String> getTeamName();
+	
+	List<String> getCenterName();
 
 	int setProject(Project model);
 

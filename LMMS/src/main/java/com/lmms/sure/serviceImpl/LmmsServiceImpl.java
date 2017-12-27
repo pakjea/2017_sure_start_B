@@ -3,16 +3,14 @@ package com.lmms.sure.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.lmms.sure.dao.LmmsDao;
 import com.lmms.sure.service.LmmsService;
 import com.lmms.sure.vo.MileStone;
 import com.lmms.sure.vo.Project;
-
-import net.minidev.json.JSONArray;
 
 @Service
 public class LmmsServiceImpl implements LmmsService{
@@ -27,7 +25,7 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 	
 	@Override
-	public List<String> getProjectJSON() throws JSONException {
+	public List<String> getProjectJSON(){
 		// TODO Auto-generated method stub
 		List<Project> project = new ArrayList<>();
 		List<String> jsonProject = new ArrayList<>();
@@ -36,7 +34,7 @@ public class LmmsServiceImpl implements LmmsService{
 		String json;
 		for(Project pro : project) {
 			json = "{\"id\":" + pro.getId() + 
-					", \"content\": \""+ pro.getContent() +
+					", \"content\": \""+ pro.getName() +
 					"\", \"start\": \"" + pro.getStartTime() +
 					"\", \"end\": \"" + pro.getEndTime() +
 					"\", \"group\": \"" + pro.getTeamName() +
@@ -44,7 +42,7 @@ public class LmmsServiceImpl implements LmmsService{
 					"\"}";
 
 			jsonProject.add(json);
-			json ="";
+			json = "";
 		}
 		return jsonProject;
 	}
@@ -113,9 +111,61 @@ public class LmmsServiceImpl implements LmmsService{
 	}
 
 	@Override
-	public JSONArray getProjectJSONArray() {
+	public List<String> getTeamName() {
 		// TODO Auto-generated method stub
-		return null;
+		return lmmsDao.selectTeam();
 	}
+
+	@Override
+	public List<String> getCenterName() {
+		// TODO Auto-generated method stub
+		return lmmsDao.selectCenter();
+	}
+
+	@Override
+	public List<String> getProjectJSONForServer() {
+		// TODO Auto-generated method stub
+		List<Project> project = new ArrayList<>();
+		List<String> projectJson = new ArrayList<>();
+		Gson gson = new Gson();
+		
+		project = lmmsDao.selectProject();
+		String json;
+		for(Project pro : project) {
+			json = gson.toJson(pro);
+			projectJson.add(json);
+			json ="";
+		}
+		return projectJson;
+	}
+
+	@Override
+	public List<String> getMileStoneJSONForServer() {
+		// TODO Auto-generated method stub
+		List<MileStone> mileStone = new ArrayList<>();
+		List<String> mileStoneJson = new ArrayList<>();
+		Gson gson = new Gson();
+		
+		mileStone = lmmsDao.selectMileStone();
+		String json;
+
+		for(MileStone ms : mileStone) {
+			json = "{\"id\":\"" + "m" + ms.getId() +
+					"\",\"name\":\"" + ms.getName() +
+					"\",\"registerDate\":\"" + ms.getRegisterDate() +
+					"\",\"content\":\"" + ms.getContent() + 
+					"\",\"member\":\"" + ms.getMember() + 
+					"\",\"manager\":\"" + ms.getManager() + 
+					"\",\"reason\":\"" + ms.getReason() + 
+					"\",\"status\":\"" + ms.getStatus() + 
+					"\",\"projectId\":\"" + ms.getProjectId() + 
+					"\"}";
+			mileStoneJson.add(json);
+			json ="";
+		}
+		return mileStoneJson;
+	}
+
+	
 
 }
