@@ -251,7 +251,7 @@
             <label for="mileStoneStatus" class="col-form-label">상태</label>
             <input type="text" class="form-control" name ="status">
             <label for="mileStoneReason" class="col-form-label">이유</label>
-            <textarea class="form-control" name="reason"></textarea>
+            <textarea class="form-control" name="reason" id="mileStoneReason"></textarea>
           </div>
           <div class="modal-footer">
           
@@ -362,7 +362,7 @@
 	  modal.find('.modal-body #centerName').val(jsonItem.centerName);
 	  modal.find('.modal-body #projectContent').val(jsonItem.content);
 	  modal.find('.modal-body #projectId').val(jsonItem.id);
-	  $('#modifiedProjectModal').find('.modal-title').text('프로젝트 : ' + jsonItem.name + jsonItem.id);
+	  $('#modifiedProjectModal').find('.modal-title').text('프로젝트 : ' + jsonItem.name);
 	  $('#modifiedProjectModal').find('.modal-body #projectName').val(jsonItem.name);
 	  $('#modifiedProjectModal').find('.modal-body #projectStartTime').val(jsonItem.startTime);
 	  $('#modifiedProjectModal').find('.modal-body #projectEndTime').val(jsonItem.endTime);
@@ -659,7 +659,38 @@ container.onclick = function () {
 		   },
 		   success: function(result) {
 		      console.log(result)
-		      
+	  var modal = $('#viewProjectModal');
+	  var jsonItem = result;
+	  
+	  modal.find('.modal-body #deleteProjectId').val(jsonItem.id);
+	  modal.find('.modal-title').text('프로젝트 : ' + jsonItem.name);
+	  modal.find('.modal-body #projectName').val(jsonItem.name);
+	  modal.find('.modal-body #projectStartTime').val(jsonItem.startTime);
+	  modal.find('.modal-body #projectEndTime').val(jsonItem.endTime);
+	  modal.find('.modal-body #projectMember').val(jsonItem.member);
+	  modal.find('.modal-body #projectManager').val(jsonItem.manager);
+	  modal.find('.modal-body #teamName').val(jsonItem.teamName);
+	  modal.find('.modal-body #centerName').val(jsonItem.centerName);
+	  modal.find('.modal-body #projectContent').val(jsonItem.content);
+	  modal.find('.modal-body #projectId').val(jsonItem.id);
+	  $('#modifiedProjectModal').find('.modal-title').text('프로젝트 : ' + jsonItem.name + jsonItem.id);
+	  $('#modifiedProjectModal').find('.modal-body #projectName').val(jsonItem.name);
+	  $('#modifiedProjectModal').find('.modal-body #projectStartTime').val(jsonItem.startTime);
+	  $('#modifiedProjectModal').find('.modal-body #projectEndTime').val(jsonItem.endTime);
+	  $('#modifiedProjectModal').find('.modal-body #projectMember').val(jsonItem.member);
+	  $('#modifiedProjectModal').find('.modal-body #projectReasonr').val(jsonItem.reason);
+	  $('#modifiedProjectModal').find('.modal-body #projectManager').val(jsonItem.manager);
+	  $('#modifiedProjectModal').find('.modal-body #projectStatus').val(jsonItem.status);
+	  $('#modifiedProjectModal').find('.modal-body #teamName').val(jsonItem.teamName);
+	  $('#modifiedProjectModal').find('.modal-body #centerName').val(jsonItem.centerName);
+	  $('#modifiedProjectModal').find('.modal-body #projectContent').val(jsonItem.content);
+	  
+	  $('#createMileStoneModal').find('.modal-body #projectId').val(jsonItem.id);
+	  $('#createMileStoneModal').find('.modal-body #projectName').val(jsonItem.name);
+	  $('#createMileStoneModal').find('.modal-body #mileStoneReason').val("프로젝트 : "+jsonItem.name);
+	  
+	  $('#viewProjectModal').modal('show')
+	  
 		   },
 		   error: function(error) {
 		      console.log(error);
